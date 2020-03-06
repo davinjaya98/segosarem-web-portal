@@ -1,0 +1,1 @@
+var app = angular.module(projectName, ['ServiceManager', 'ngSanitize', 'ngPatternRestrict']);

@@ -1,0 +1,33 @@
+{
+  "name": "frontend-template",
+  "version": "1.0.0",
+  "description": "Frontend Template starter with angularjs and sass framework",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Davin-Jaya@bitbucket.org/Davin-Jaya/frontend-template.git"
+  },
+  "author": "Davin Jaya (davin.jaya@3enix.com)",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/Davin-Jaya/frontend-template#readme",
+  "devDependencies": {
+    "angular": "latest",
+    "angular-sanitize": "latest",
+    "del": "latest",
+    "gulp": "^4.0.2",
+    "gulp-concat": "latest",
+    "gulp-connect": "latest",
+    "gulp-sass": "latest",
+    "gulp-uglify": "latest",
+    "gulp-util": "latest",
+    "jquery": "latest",
+    "moment": "latest",
+    "ng-pattern-restrict": "latest"
+  },
+  "dependencies": {
+    "flexboxgrid": "^6.3.1"
+  }
+}
