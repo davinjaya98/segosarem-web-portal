@@ -12,7 +12,8 @@ var jsVendors = [
     `${vendorResourcePath}angular-sanitize/angular-sanitize.js`,
     `${vendorResourcePath}ng-pattern-restrict/src/ng-pattern-restrict.js`,
     `${vendorResourcePath}jquery/dist/jquery.js`,
-    `${vendorResourcePath}moment/moment.js`
+    `${vendorResourcePath}moment/moment.js`,
+    `${vendorResourcePath}animejs/lib/anime.js`
 ];
 
 var htmlContextPath = 'app/pages/';

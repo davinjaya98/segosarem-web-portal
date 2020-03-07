@@ -68,6 +68,10 @@ body {
     }
 }
 
+.content {
+    margin-top: calculateRem(70px);
+}
+
 .custom-container {
     // width: 100%;
     padding-left: calculateRem(16px);
