@@ -1,0 +1,38 @@
+/* Font Family */
+$font-path: "../fonts";
+
+@font-face {
+    src: url("#{$font-path}/notosanssc/notosanssc-thin.otf");
+    font-family: "NotoSans-SC-Thin";
+    // font-weight: 100;
+}
+
+@font-face {
+    src: url("#{$font-path}/notosanssc/notosanssc-light.otf");
+    font-family: "NotoSans-SC-Light";
+    // font-weight: 300;
+}
+
+@font-face {
+    src: url("#{$font-path}/notosanssc/notosanssc-regular.otf");
+    font-family: "NotoSans-SC-Regular";
+    // font-weight: 400;
+}
+
+@font-face {
+    src: url("#{$font-path}/notosanssc/notosanssc-medium.otf");
+    font-family: "NotoSans-SC-Medium";
+    // font-weight: 500;
+}
+
+@font-face {
+    src: url("#{$font-path}/notosanssc/notosanssc-bold.otf");
+    font-family: "NotoSans-SC-Bold";
+    // font-weight: 700;
+}
+
+@font-face {
+    src: url("#{$font-path}/notosanssc/notosanssc-black.otf");
+    font-family: "NotoSans-SC-Black";
+    // font-weight: 900;
+}
