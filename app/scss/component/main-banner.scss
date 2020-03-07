@@ -1,4 +1,71 @@
 .c-main-banner {
-    background-image: radial-gradient(circle at 59% 56%, #dc0404, #780000 106%);
+  background-image: radial-gradient(circle at 59% 56%, #dc0404, #780000 106%);
+  .c-main-banner-wrapper {
+    overflow: hidden;
+    @media (min-width: 768px) {
+      // position: relative;
+    }
+  }
+  &.full-page {
     height: calc(100vh - 70px);
+    @media (min-width: 1200px) {
+      height: calc(70vh - 70px);
+    }
+  }
+  &.half-page {
+    height: calc(60vh - 70px);
+  }
+  .logo {
+    position: fixed;
+    top: calculateRem(70px - 40.5px);
+    left: calculateRem(24px);
+    width: calculateRem(81px);
+    height: calculateRem(81px);
+    z-index: 1;
+    @media (min-width: 991px) {
+      position: absolute;
+      top: calculateRem(29.7px);
+      left: calculateRem(68px);
+      width: calculateRem(131px);
+      height: calculateRem(131px);
+      z-index: unset;
+    }
+  }
+  .banner-text {
+    position: absolute;
+    right: calculateRem(20px);
+    bottom: 112vw;
+    transform: rotate(-3deg);
+    &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 7px;
+        // background: white;
+        border: solid 5px white;
+        border-color: white transparent transparent;
+        border-radius: 250%/250px 250px 250px 250px;
+        // border-radius: 350%/100px 100px 0 0;
+    }
+  }
+  .banner-menu {
+    position: absolute;
+    // left: 0;
+    margin-right: -25vw;
+    right: 0;
+    margin-bottom: -15vw;
+    bottom: 0;
+    // right: -30vw;
+    // bottom: -30vw;
+    width: 100vw;
+    height: 115vw;
+    // max-width: calculateRem(334px);
+    @media (min-width: 768px) {
+      // position: relative;
+      margin-right: unset;
+      margin-bottom: -6vw;
+      height: auto;
+      max-width: calculateRem(637px);
+    }
+  }
 }

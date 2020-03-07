@@ -3,6 +3,33 @@
     font-family: "NotoSans-SC-Regular";
 }
 
+h1 {
+    font-family: "AdamWarrenpro";
+    font-size: calculateRem(36px);
+    color: $color-red;
+    @media (min-width: 991px) {
+        font-size: calculateRem(52px);
+    }
+}
+
+h2 {
+    font-family: "NotoSans-SC-Bold";
+    font-size: calculateRem(31px);
+    color: $color-white;
+}
+
+h3 {
+    font-family: "NotoSans-SC-Bold";
+    font-size: calculateRem(21px);
+    color: $color-393939;
+}
+
+.section-title {
+    font-family: "AdamWarrenpro";
+    font-size: calculateRem(46px);
+    color: $color-white;
+}
+
 body {
     margin: 0;
 }
@@ -69,7 +96,11 @@ body {
 }
 
 .content {
+    overflow-x: hidden;
     margin-top: calculateRem(70px);
+    @media (min-width: 768px) {
+        overflow-x: unset;
+    }
 }
 
 .custom-container {

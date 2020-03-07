@@ -1,6 +1,7 @@
 /* Font Family */
 $font-path: "../fonts";
 
+//NOTOSANS SC
 @font-face {
     src: url("#{$font-path}/notosanssc/notosanssc-thin.otf");
     font-family: "NotoSans-SC-Thin";
@@ -34,5 +35,25 @@ $font-path: "../fonts";
 @font-face {
     src: url("#{$font-path}/notosanssc/notosanssc-black.otf");
     font-family: "NotoSans-SC-Black";
+    // font-weight: 900;
+}
+
+//ADAM WARREN PRO
+
+@font-face {
+    src: url("#{$font-path}/adamwarrenpro/adamwarrenpro.ttf");
+    font-family: "AdamWarrenpro";
+    // font-weight: 500;
+}
+
+@font-face {
+    src: url("#{$font-path}/adamwarrenpro/adamwarrenpro-bold.ttf");
+    font-family: "AdamWarrenpro-Bold";
+    // font-weight: 700;
+}
+
+@font-face {
+    src: url("#{$font-path}/adamwarrenpro/adamwarrenpro-bolditalic.ttf");
+    font-family: "AdamWarrenpro-BoldItalic";
     // font-weight: 900;
 }

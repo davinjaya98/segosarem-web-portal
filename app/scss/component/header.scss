@@ -6,6 +6,7 @@ header {
     background: $color-brick;
     width: 100%;
     height: calculateRem(70px);
+    z-index: 1;
     a {
         color: $color-white;
         text-decoration: none;
