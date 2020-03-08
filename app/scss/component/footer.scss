@@ -1,0 +1,88 @@
+footer {
+  .main-footer {
+    background: $color-brick;
+    padding-top: calculateRem(72px);
+    padding-bottom: calculateRem(50px);
+
+    .footer-target-wrapper {
+        margin-top: auto;
+        margin-bottom: auto;
+        .footer-target {
+          display: block;
+          color: $color-white;
+          margin-bottom: calculateRem(43px);
+          a {
+            font-family: "NotoSans-SC-Bold";
+            text-decoration: none;
+            color: $color-fff-300;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+    }
+
+    .instagram-details {
+      padding-bottom: calculateRem(32px);
+      .logo {
+        width: calculateRem(50px);
+        height: calculateRem(50px);
+        @media (min-width: 991px) {
+            width: calculateRem(66px);
+            height: calculateRem(66px);
+        }
+      }
+      .instagram-details-wrapper {
+        flex-grow: 1;
+        padding-left: calculateRem(7px);
+        .instagram-logo {
+          width: calculateRem(23px);
+          margin-top: 0.25rem;
+        }
+        .username {
+          margin-left: calculateRem(5px);
+          color: $color-white;
+          font-size: calculateRem(21px);
+          font-family: "NotoSans-SC-Bold";
+        }
+      }
+      .instagram-follow {
+        span {
+          color: $color-white;
+        }
+        a {
+          font-family: "NotoSans-SC-Bold";
+          text-decoration: none;
+          color: $color-fff-300;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .instagram-post {
+      margin-left: calculateRem(-3px);
+      margin-right: calculateRem(-3px);
+      .post {
+        padding-left: calculateRem(3px);
+        padding-right: calculateRem(3px);
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .sub-footer {
+      .company-sign {
+          text-align: center;
+          padding-top: calculateRem(14px);
+          padding-bottom: calculateRem(15px);
+          font-size: calculateRem(11px);
+          color: $color-red;
+          @media (min-width: 991px) {
+            font-size: calculateRem(12px);
+          }
+      }
+  }
+}
