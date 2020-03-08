@@ -12,9 +12,13 @@
       color: $color-393939;
     }
     a {
-      font-size: calculateRem(21px);
       color: $color-878787;
       text-decoration: none;
+      @media (min-width: 375px) {
+        span {
+          font-size: calculateRem(21px);
+        }
+      }
       &:hover {
         text-decoration: underline;
       }
