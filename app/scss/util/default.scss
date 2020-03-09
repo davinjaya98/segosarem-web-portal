@@ -125,12 +125,14 @@ body {
     @media (min-width: 991px) {
         // margin-left: calculateRem(182px);
         // margin-right: calculateRem(182px);
-        max-width: calculateRem(1002px);
+        max-width: calculateRem(960px);
     }
     @media (min-width: 1200px) {
-        margin-left: calculateRem(182px);
-        margin-right: calculateRem(182px);
-        max-width: none;
+        // margin-left: calculateRem(182px);
+        // margin-right: calculateRem(182px);
+        margin-left: auto;
+        margin-right: auto;
+        // max-width: none;
     }
 }
 
