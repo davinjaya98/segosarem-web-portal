@@ -12,6 +12,7 @@ footer {
           color: $color-white;
           margin-bottom: calculateRem(43px);
           a {
+            cursor: pointer;
             font-family: "NotoSans-SC-Bold";
             text-decoration: none;
             color: $color-fff-300;
