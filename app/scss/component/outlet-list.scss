@@ -21,16 +21,16 @@
                 width: 100%;
             }
     
-            h3 {
-                width: calculateRem(300px);
-                @media (min-width: 991px) {
-                    width: calculateRem(397px);
-                }
-            }
+            // h3 {
+            //     width: calculateRem(300px);
+            //     @media (min-width: 991px) {
+            //         width: calculateRem(397px);
+            //     }
+            // }
     
-            p {
-                width: calculateRem(257px);
-            }
+            // p {
+            //     width: calculateRem(257px);
+            // }
     
             .outlet-target {
                 margin-bottom: calculateRem(45px);
