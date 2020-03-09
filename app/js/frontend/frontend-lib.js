@@ -3,8 +3,9 @@ var feLib = "";
 
 (function () {
     function trigger_contact_us_modal() {
-        $(".contact-us-popup").modal({
-            fadeDuration: 100
+        $(".c-contact-us-modal").modal({
+            fadeDuration: 100,
+            showClose: false
         });
     }
 

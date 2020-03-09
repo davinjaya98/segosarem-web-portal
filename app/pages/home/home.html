@@ -187,8 +187,42 @@
         </footer>
         <!-- Footer-->
     </div>
-    <div class="contact-us-popup modal">
-        Test
+    <div class="c-contact-us-modal modal">
+        <div class="modal-title">
+            <div class="modal-title-wrapper">
+                <!-- <img src="/assets/images/sent.png" alt="Sent Image"> -->
+                <!-- <span class="title">Okeh, Kami akan segera menghubungi anda.</span> -->
+                <span class="title">Berminat untuk <br>kerja sama?</span>
+            </div>
+            <a class="close" rel="modal:close"><img src="/assets/images/close-white.svg" aly="Close Modal Image"></a>
+        </div>
+        <div class="modal-content">
+            <form name="contact-us-form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <img class="prepend-position-1" src="/assets/images/mail.svg">
+                        <input name="email" type="email" placeholder="example@gmail.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <img class="prepend-position-1" src="/assets/images/phone.svg">
+                        <span class="prepend-position-2">+62</span>
+                        <input name="phoneNumber" type="text" placeholder="81234567890" numeric required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <img class="prepend-position-1" src="/assets/images/user.svg">
+                        <input name="name" type="text" placeholder="Nama Lengkap" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div></div>
+                    <button type="submit">Kirim <img src="/assets/images/arrow-forward-yellow.svg"></button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 

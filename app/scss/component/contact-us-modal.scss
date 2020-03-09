@@ -1,0 +1,56 @@
+.c-contact-us-modal {
+    background: $color-brick;
+    padding: calculateRem(25px) calculateRem(18px) calculateRem(38px);
+    border-radius: calculateRem(42px);
+    @media (min-width: 375px) {
+        padding-left: calculateRem(28px);
+        padding-right: calculateRem(28px);
+    }
+    .modal-title {
+        display: flex;
+        margin-bottom: calculateRem(16px);
+        .modal-title-wrapper {
+            flex-grow: 1;
+            img {
+                width: calculateRem(125px);
+                margin-bottom: calculateRem(36px);
+            }
+            .title {
+                display: block;
+                color: $color-white;
+                font-size: calculateRem(21px);
+                font-family: "NotoSans-SC-Bold";
+                @media (min-width: 1200px) {
+                    font-size: calculateRem(31px);
+                }
+            }
+        }
+        .close {
+            cursor: pointer;
+            @media (min-width: 1200px) {
+                margin-top: calculateRem(15px);
+            }
+        }
+    }
+    .modal-content {
+        margin-top: calculateRem(30px);
+    }
+    .modal-footer {
+        margin-top: calculateRem(44.5px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        button {
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            color: $color-fff-300;
+            font-size: calculateRem(21px);
+            img {
+                margin-top: .25rem;
+                margin-left: .25rem;
+            }
+        }
+    }
+}

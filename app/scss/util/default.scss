@@ -103,7 +103,6 @@ body {
     .d-lg-block {
         display: block;
     }
-
     .d-lg-none {
         display: none;
     }
@@ -132,6 +131,62 @@ body {
         margin-left: calculateRem(182px);
         margin-right: calculateRem(182px);
         max-width: none;
+    }
+}
+
+// Form
+form {
+    margin-bottom: 0;
+    .form-group {
+        margin-bottom: calculateRem(35.3px);
+        .input-group {
+            position: relative;
+            * {
+                color: $color-white;
+            }
+            .prepend-position-1 {
+                position: absolute;
+                left: calculateRem(14px);
+                bottom: calculateRem(14px);
+            }
+            .prepend-position-2 {
+                position: absolute;
+                left: calculateRem(47px);
+                bottom: calculateRem(15px);
+                +input {
+                    padding-left: calculateRem(80px);
+                }
+            }
+        }
+        span {
+            font-family: "NotoSans-SC-Bold";
+        }
+        input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 1);
+            padding-left: calculateRem(47px);
+            padding-bottom: calculateRem(14px);
+            color: $color-white;
+            &:focus {
+                outline: none;
+            }
+            &::-webkit-input-placeholder {
+                /* Edge */
+                color: $color-cacaca;
+                font-family: "NotoSans-SC-Light";
+            }
+            &:-ms-input-placeholder {
+                /* Internet Explorer 10-11 */
+                color: $color-cacaca;
+                font-family: "NotoSans-SC-Light";
+            }
+            &::placeholder {
+                color: $color-cacaca;
+                font-family: "NotoSans-SC-Light";
+            }
+        }
     }
 }
 
