@@ -1,12 +1,12 @@
 .c-menu-list {
-  padding-left: calculateRem(10px);
-  padding-right: calculateRem(10px);
-  @media (min-width: 991px) {
-    // margin-top: calculateRem(87px);
-    // margin-bottom: calculateRem(0px);
-    padding-left: calculateRem(250px);
-    padding-right: calculateRem(250px);
-  }
+  // padding-left: calculateRem(10px);
+  // padding-right: calculateRem(10px);
+  // @media (min-width: 991px) {
+  //   // margin-top: calculateRem(87px);
+  //   // margin-bottom: calculateRem(0px);
+  //   padding-left: calculateRem(250px);
+  //   padding-right: calculateRem(250px);
+  // }
 
   #menu-list-title {
     h1 {
@@ -39,12 +39,12 @@
     }
   }
 
-  #row {
+  .row {
     .c-menu-card {
       padding-bottom: calculateRem(55px);
       padding-left: calculateRem(27px);
       padding-right: calculateRem(27px);
-      @media (width: 991px) {
+      @media (min-width: 991px) {
         padding-left: calculateRem(4px);
         padding-right: calculateRem(4px);
       }
@@ -56,20 +56,12 @@
         }
       }
 
-      #menu-title {
-        h2 {
-          font-weight: bold;
-          font-size: calculateRem(21px);
-          color: #393939;
-        }
+      h3 {
+        width: calculateRem(147px);
       }
-
-      #menu-desc {
-        p {
-          //width: calculateRem(257px);
-          font-size: calculateRem(21px);
-          color: #393939;
-        }
+  
+      p {
+        width: calculateRem(257px);
       }
     }
   }
