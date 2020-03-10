@@ -1,0 +1,51 @@
+.c-testimonies {
+    background-color: $color-brick;
+    padding-top: calculateRem(141px);
+    padding-bottom: calculateRem(89px);
+    position: relative;
+    .c-testimonies-image {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -78px);
+        img {
+            width: calculateRem(156px);
+        }
+    }
+    .c-testimonies-carousel {
+        .testimony {
+            text-align: center;
+            .description {
+                display: block;
+                font-size: calculateRem(21px);
+                max-width: calculateRem(300px);
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: calculateRem(62px);
+                @media (min-width: 768px) {
+                    max-width: calculateRem(368px);
+                }
+                @media (min-width: 991px) {
+                    max-width: calculateRem(656px);
+                    font-size: calculateRem(32px);
+                }
+            }
+            .name {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: calculateRem(16px);
+                &:before {
+                    content: "-";
+                    padding-right: .25rem;
+                }
+                &:after {
+                    content: "-";
+                }
+                @media (min-width: 991px) {
+                    font-size: calculateRem(24px);
+                }
+            }
+        }
+    }
+}
