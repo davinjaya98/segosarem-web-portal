@@ -1,0 +1,28 @@
+.c-about-us-full {
+    padding-top: calculateRem(44px);
+    padding-bottom: calculateRem(80px);
+    .c-about-us-full-container {
+        @media (min-width: 991px) {
+            padding-top: calculateRem(69.1px);
+            padding-bottom: calculateRem(118px);
+        }
+        @media (min-width: 1200px) {
+            padding-left: calculateRem(108.5px);
+            padding-right: calculateRem(108.5px);
+        }
+        img {
+            width: 100%;
+        }
+        .c-about-us-full-description-placeholder {
+            * {
+                color: $color-393939;
+            }
+            strong {
+                font-size: calculateRem(18px);
+            }
+            p {
+                margin-bottom: calculateRem(20px);
+            }
+        }
+    }
+}
