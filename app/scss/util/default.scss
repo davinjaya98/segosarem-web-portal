@@ -139,6 +139,7 @@ body {
 // Form
 form {
     margin-bottom: 0;
+    overflow-x: hidden;
     .form-group {
         margin-bottom: calculateRem(35.3px);
         .input-group {
