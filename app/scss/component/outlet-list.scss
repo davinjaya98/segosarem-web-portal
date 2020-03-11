@@ -10,11 +10,16 @@
 
     .row {
         .c-outlet-single {
-            padding-left: calculateRem(8px);
-            padding-right: calculateRem(8px);
+            padding: calculateRem(8px);
+            //margin: calculateRem(4px);
             @media (min-width: 991px) {
-                padding-left: calculateRem(21px);
-                padding-right: calculateRem(21px);
+              padding: calculateRem(20px);
+              // margin: calculateRem(4px);
+            }
+
+            .overlay-trending-logo {
+              top: calculateRem(-100px);
+              right: calculateRem(-8px);
             }
 
             .outlet-image {
@@ -50,6 +55,13 @@
                   padding-left: 0;
                 }
               }
+
+              &:hover {
+                box-shadow: 5px 15px 30px 0 rgba(0, 0, 0, 0.25);
+                border: solid 1px #979797;
+                background-color: #ffffff;
+              }
         }
+        
     }
 }

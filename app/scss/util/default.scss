@@ -96,6 +96,11 @@ body {
     position: relative;
 }
 
+.overlay-trending-logo {
+    position: absolute;
+    max-width: calculateRem(86px);
+}
+
 @media (min-width: 991px) {
     .d-lg-flex {
         display: flex;
@@ -197,3 +202,40 @@ form {
 .blocker {
     z-index: 999;
 }
+
+// title css for menu list title
+.menu-list-title {
+    h1 {
+      margin-block-start: 0px;
+      margin-block-end: 0px;
+      font-weight:normal;
+    }
+
+    width: calculateRem(264px);
+    //height: calculateRem(82px);
+    padding-top: calculateRem(87px);
+    margin-bottom: calculateRem(62px);
+    text-align: center;
+    margin-left: calculateRem(30px);
+    @media (min-width: 375px) {
+      margin-left: calculateRem(91px);
+      margin-right: calculateRem(10px);
+    }
+    @media (min-width: 767px){
+      width:calculateRem(490px);
+    }
+
+    .underline {
+      display: block;
+      transform: rotateZ(4deg);
+      margin-left: auto;
+      margin-right: auto;
+      width: calculateRem(215px);
+      @media (min-width: 991px) {
+        width: calculateRem(493px);
+        // transform: rotateZ(0deg);
+      }
+    }
+  }
+// title css for menu list title
+

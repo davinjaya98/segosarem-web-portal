@@ -1,0 +1,31 @@
+// css for single card
+.c-menu-card {
+    padding-bottom: calculateRem(55px);
+    padding-left: calculateRem(27px);
+    padding-right: calculateRem(27px);
+    @media (min-width: 991px) {
+      padding-left: calculateRem(4px);
+      padding-right: calculateRem(4px);
+    }
+
+    .menu-image {
+      //width: calculateRem(300px);
+      img {
+        width: 100%; //calculateRem(300px);
+      }
+    }
+
+    .overlay-trending-logo {
+      top: calculateRem(-130px);
+      left: calculateRem(0px);
+    }
+
+    // h3 {
+    //   width: calculateRem(147px);
+    // }
+
+    // p {
+    //   width: calculateRem(257px);
+    // }
+  }
+// css for single card
