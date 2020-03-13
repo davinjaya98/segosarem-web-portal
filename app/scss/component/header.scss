@@ -13,7 +13,7 @@ c-header {
                 color: $color-white;
                 text-decoration: none;
                 opacity: .8;
-                transition: .5s;
+                transition: opacity .5s;
                 @media (min-width: 991px) {
                     margin-left: calculateRem(57px);
                 }

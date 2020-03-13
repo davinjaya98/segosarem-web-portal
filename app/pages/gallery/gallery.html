@@ -2,62 +2,53 @@
 <html lang="en" ng-app="SegosaremWebPortal">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Galeri</title>
-  <base href="/" />
-  <script src="/assets/js/vendor.js"></script>
-  <script src="/assets/js/main.js"></script>
-  <script src="/assets/js/fe-lib.js"></script>
-  <link rel="stylesheet" href="/assets/css/main.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeri</title>
+    <base href="/" />
+    <script src="/assets/js/vendor.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/fe-lib.js"></script>
+    <link rel="stylesheet" href="/assets/css/main.css" />
 </head>
 
 <body>
-  <!-- Header -->
-  <c-header></c-header>
-  <!-- Header -->
+    <!-- Header -->
+    <c-header></c-header>
+    <!-- Header -->
 
-  <!-- content -->
-  <div class="content">
-    <!-- Main Banner -->
-    <section>
-      <div class="c-main-banner half-page">
-        <div class="custom-container h-100">
-          <div class="d-flex align-items-center justify-content-center position-relative h-100">
-            <div class="c-main-banner-wrapper">
-              <img class="logo" src="/assets/images/logo.png" alt="Segosarem Logo" />
-              <div class="d-inline-flex align-items-center banner-text">
-                <div class="banner-text-wrapper position-relative">
-                  <span class="section-title section-title-1">GALERI MAKANAN</span><br />
-                  <span class="section-title section-title-2">NASI SAMBAL SIREM CAKBOYO</span>
-                  <img class="underline" src="/assets/images/underline-white.svg" alt="underline" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Main Banner -->
+    <!-- content -->
+    <div class="content">
+        <!-- Main Banner -->
+        <section>
+            <main-banner upper-title="GALERI MAKANAN" lower-title="NASI SAMBAL SIREM CAKBOYO" type="2"></main-banner>
+        </section>
+        <!-- Main Banner -->
 
-    <!-- all menu -->
-    <menu-list></menu-list>
-    <!-- all menu -->
+        <!-- all menu -->
+        <section>
+            <menu-list></menu-list>
+        </section>
+        <!-- all menu -->
 
-    <!-- Newest Outlet -->
-    <newest-outlet></newest-outlet>
-    <!-- Newest Outlet -->
+        <!-- Newest Outlet -->
+        <section>
+            <newest-outlet></newest-outlet>
+        </section>
+        <!-- Newest Outlet -->
 
-    <!-- About Us Snippet -->
-    <about-us-snippet></about-us-snippet>
-    <!-- About Us Snippet -->
+        <!-- About Us Snippet -->
+        <section>
+            <about-us-snippet></about-us-snippet>
+        </section>
+        <!-- About Us Snippet -->
 
-    <!-- Footer-->
-    <c-footer></c-footer>
-    <!-- Footer-->
-  </div>
-  <!-- content -->
-  <contact-us-modal></contact-us-modal>
+        <!-- Footer-->
+        <c-footer></c-footer>
+        <!-- Footer-->
+    </div>
+    <!-- content -->
+    <contact-us-modal></contact-us-modal>
 </body>
 
 </html>
