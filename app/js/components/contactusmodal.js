@@ -84,7 +84,7 @@ function contactUsModalController($scope, HTTPService, LoadingService, AppConsta
         //Attach the event to close modal
         $(".c-contact-us-modal").on($.modal.AFTER_CLOSE, function(event, modal) {
             console.log("Modal is closed");
-            $timeout(function() {
+            $timeout(() => {
                 $scope.submitted = false;
             });
         });

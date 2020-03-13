@@ -9,10 +9,13 @@
       }
       @media (min-width: 991px) {
         height: calc(80vh - 70px);
-        max-height: none;
+        max-height: calculateRem(550px);
+      }
+      @media (min-width: 1200px) {
       }
       @media (min-width: 1500px) {
         height: calc(70vh - 70px);
+        max-height: none;
       }
       .c-main-banner-wrapper {
         margin-bottom: -7rem;
