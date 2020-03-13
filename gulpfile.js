@@ -25,7 +25,7 @@ var assetsContextPath = 'app/assets/';
 var htmlSources = ['index.html', `${htmlContextPath}**/*.html`]
 
 var sassSources = [`${sassContextPath}*.scss`],
-    jsSources = [`index.js`, `${jsContextPath}main.js`, `${jsContextPath}frontend/*.js`, `${jsContextPath}app/*.js`, `${jsContextPath}controllers/*.js`, `${jsContextPath}service/*.js`],
+    jsSources = [`index.js`, `${jsContextPath}main.js`, `${jsContextPath}frontend/*.js`, `${jsContextPath}app/*.js`, `${jsContextPath}components/*.js`, `${jsContextPath}service/*.js`],
     feJsSources = [`${jsContextPath}frontend/frontend-lib.js`],
     assetsSources = [`${assetsContextPath}*/**`],
     outputDir = "dist/"

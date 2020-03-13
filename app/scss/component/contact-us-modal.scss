@@ -34,13 +34,19 @@
     }
     .modal-content {
         margin-top: calculateRem(30px);
+        .contact-us-text {
+            * {
+                color: $color-white;
+            }
+        }
     }
     .modal-footer {
         margin-top: calculateRem(44.5px);
         display: flex;
         align-items: center;
         justify-content: space-between;
-        button {
+        button, .close-button {
+            cursor: pointer;
             background: none;
             border: none;
             display: flex;
