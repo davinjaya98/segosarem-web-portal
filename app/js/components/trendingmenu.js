@@ -10,7 +10,7 @@ app.component('trendingMenu', {
                 <!-- menu list title -->
                 <div class="menu-list-title">
                     <!-- title string -->
-                    <h1>MENU ANDALAN KAMI</h1>
+                    <h1>{{trendingMenu['homepage.trendingmenu.title'][0]['homepage.trendingmenu.title.text']}}</h1>
                     <!-- title string -->
 
                     <!-- underline -->
@@ -22,10 +22,10 @@ app.component('trendingMenu', {
                 <!-- gallery row-->
                 <div class="row">
                     <!-- card col -->
-                    <div class="c-menu-card col-xs-12 col-sm-4">
+                    <div class="c-menu-card col-xs-12 col-sm-4" ng-repeat="menu in trendingMenu['homepage.trendingmenu.menu']">
                         <!-- menu image -->
                         <div class="menu-image">
-                            <img src="/assets/images/img-01@2x.png" alt="" />
+                            <img ng-src="{{menu['homepage.trendingmenu.menu.image']}}" alt="{{menu['homepage.trendingmenu.menu.title']}}" />
                         </div>
                         <!-- menu image -->
 
@@ -35,69 +35,12 @@ app.component('trendingMenu', {
                             <img class="overlay-trending-logo" src="/assets/images/fire-01.png" alt="" />
                             <!-- hot item badge -->
 
-                            <h3>Title Makanan</h3>
+                            <h3>{{menu['homepage.trendingmenu.menu.title']}}</h3>
                         </div>
                         <!-- menu title -->
 
                         <!-- menu desc -->
-                        <p>
-                            Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                            sambel mantul
-                        </p>
-                        <!-- menu desc -->
-                    </div>
-                    <!-- card col -->
-
-                    <!-- card col -->
-                    <div class="c-menu-card col-xs-12 col-sm-4">
-                        <!-- menu image -->
-                        <div class="menu-image">
-                            <img src="/assets/images/img-01@2x.png" alt="" />
-                        </div>
-                        <!-- menu image -->
-
-                        <!-- menu title -->
-                        <div class="menu-title position-relative">
-                            <!-- hot item badge -->
-                            <img class="overlay-trending-logo" src="/assets/images/fire-02.png" alt="" />
-                            <!-- hot item badge -->
-
-                            <h3>Title Makanan</h3>
-                        </div>
-                        <!-- menu title -->
-
-                        <!-- menu desc -->
-                        <p>
-                            Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                            sambel mantul
-                        </p>
-                        <!-- menu desc -->
-                    </div>
-                    <!-- card col -->
-
-                    <!-- card col -->
-                    <div class="c-menu-card col-xs-12 col-sm-4">
-                        <!-- menu image -->
-                        <div class="menu-image">
-                            <img src="/assets/images/img-01@2x.png" alt="" />
-                        </div>
-                        <!-- menu image -->
-
-                        <!-- menu title -->
-                        <div class="menu-title position-relative">
-                            <!-- hot item badge -->
-                            <img class="overlay-trending-logo" src="/assets/images/fire-03.png" alt="" />
-                            <!-- hot item badge -->
-
-                            <h3>Title Makanan</h3>
-                        </div>
-                        <!-- menu title -->
-
-                        <!-- menu desc -->
-                        <p>
-                            Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                            sambel mantul
-                        </p>
+                        <p>{{menu['homepage.trendingmenu.menu.description']}}</p>
                         <!-- menu desc -->
                     </div>
                     <!-- card col -->
@@ -127,9 +70,17 @@ app.component('trendingMenu', {
 trendingMenuController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppConstant', '$timeout'];
 function trendingMenuController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
     //This is the State
-    $scope.contactUs = {};
+    $scope.trendingMenu = {};
 
     $scope.initTrendingMenuController = () => {
-        console.log("Trending menu is loaded");
+        let request = {
+            "pageKey": "homepage"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            console.log("Trending menu is loaded with ", res);
+            if(res.returnCode == "000000") {
+                $scope.trendingMenu = res.responseObject.homepage;
+            }
+        });
     }
 }
