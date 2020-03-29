@@ -5,13 +5,8 @@ app.component('aboutUsSnippet', {
             <div class="custom-container">
             <div class="row">
                 <div class="c-about-us-target-wrapper col-xs-12 col-sm-6">
-                <h3>Kenali Tentang Kami</h3>
-                <p>
-                    PT. SEGO SAREM CAK BOYO adalah Lorem Ipsum is simply dummy
-                    text of the printing and typesetting industry. Lorem Ipsum has
-                    been the industry's standard dummy text ever since the 1500s,
-                    when an unknown
-                </p>
+                <h3>{{aboutUsSnippet['common.aboutus.title'][0]['common.aboutus.title.text']}}</h3>
+                <p>{{aboutUsSnippet['common.aboutus.description'][0]['common.aboutus.description.text']}}</p>
                 <a href="#" class="d-flex align-items-center c-about-us-target">
                     <span>Lihat Selengkapnya</span>
                     <img src="/assets/images/arrow-red.svg" alt="Arrow" />
@@ -19,10 +14,10 @@ app.component('aboutUsSnippet', {
                 </div>
                 <div class="col-xs-12 col-sm-6">
                 <div class="c-about-us-logo-wrapper">
-                    <img class="logo" src="/assets/images/logo.png" alt="Segosarem Logo" />
+                    <img class="logo" ng-src="{{aboutUsSnippet['common.website.logo'][0]['common.website.logo.path']}}" alt="{{aboutUsSnippet['common.website.name1.text'][0]['common.website.name1.text']}}" />
                     <div class="logo-text-wrapper">
-                    <span class="section-title section-title-1">NASI SAMBEL</span><br />
-                    <span class="section-title section-title-2">SIREM CAKBOYO</span>
+                    <span class="section-title section-title-1">{{aboutUsSnippet['common.aboutus.name1'][0]['common.aboutus.name1.text']}}</span><br />
+                    <span class="section-title section-title-2">{{aboutUsSnippet['common.aboutus.name2'][0]['common.aboutus.name2.text']}}</span>
                     <img class="underline" src="/assets/images/underline-red.svg" alt="underline" />
                     </div>
                 </div>
@@ -48,6 +43,14 @@ function aboutUsSnippetController($scope, HTTPService, LoadingService, AppConsta
     $scope.aboutUsSnippet = {};
 
     $scope.initAboutUsSnippetController = () => {
-        console.log("About Us Snippet Loaded");
+        let request = {
+            "pageKey": "common"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            console.log("About Us Snippet is loaded with ", res);
+            if(res.returnCode == "000000") {
+                $scope.aboutUsSnippet = res.responseObject.common;
+            }
+        });
     }
 }

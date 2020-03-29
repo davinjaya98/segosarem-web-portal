@@ -5,7 +5,7 @@ app.component('mainBanner', {
             <div class="custom-container h-100">
                 <div class="d-flex position-relative h-100" ng-class="{'align-items-end justify-content-end': props.type == '1', 'align-items-center justify-content-center': props.type == '2'}">
                     <div class="c-main-banner-wrapper">
-                        <img class="logo" src="/assets/images/logo.png" alt="Segosarem Logo">
+                        <img class="logo" src="{{mainBanner['common.website.logo'][0]['common.website.logo.path']}}" alt="Segosarem Logo">
                         <div class="d-inline-flex align-items-center banner-text">
                             <div class="banner-text-wrapper position-relative">
                                 <img class="dash" src="/assets/images/dash.svg" alt="Thunder" ng-if="props.type == '1'">
@@ -51,6 +51,15 @@ function mainBannerController($scope, HTTPService, LoadingService, AppConstant, 
     //To initialize various logic for the Main Banner
     $scope.initMainBannerController = () => {
         $scope.props = $scope.$ctrl;
-        console.log($scope);
+        
+        let request = {
+            "pageKey": "common"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            console.log("Main Banner is loaded with ", res);
+            if(res.returnCode == "000000") {
+                $scope.mainBanner = res.responseObject.common;
+            }
+        });
     }
 }
