@@ -11,3 +11,23 @@ globalFunction.$inject = ['HTTPService', 'NotificationService', 'LoadingService'
 function globalFunction(HTTPService, NotificationService, LoadingService, AppConstant, $rootScope) {
     console.log("This is a global function that is run everytime the angular is loaded")
 }
+
+app.controller("HomepageController", homepageController);
+
+homepageController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppConstant', '$timeout'];
+function homepageController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
+    // This is the state
+    $scope.homepage = {};
+
+    $scope.initHomepageController = () => {
+        let request = {
+            "pageKey": "homepage"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            console.log("Homepage is loaded with ", res);
+            if(res.returnCode == "000000") {
+                $scope.homepage = res.responseObject.pageSetting;
+            }
+        });
+    }
+}

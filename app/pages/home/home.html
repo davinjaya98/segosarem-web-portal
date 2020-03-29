@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="SegosaremWebPortal">
+<html lang="en" ng-app="SegosaremWebPortal" ng-controller="HomepageController">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Segosarem Cak Boyo</title>
+    <title>{{homepage.title}}</title>
+    <meta name="description" ng-attr-content="{{homepage.description}}">
+    <meta name="keywords" ng-attr-content="{{homepage.seoKeywords}}">
     <base href="/">
     <script src="/assets/js/vendor.js"></script>
     <script src="/assets/js/main.js"></script>
@@ -12,7 +14,7 @@
     <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 
-<body>
+<body ng-init="initHomepageController()">
     <!-- Header -->
     <c-header></c-header>
     <!-- Header -->
