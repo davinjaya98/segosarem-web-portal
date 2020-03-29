@@ -115,23 +115,13 @@ serviceManager.service("HTTPService", ['$rootScope', '$q', '$http', 'AppConstant
                 'Content-Type': undefined
             }
 
-            // if (this.setting.authenticate && localStorage.getItem("adminToken") != null && localStorage.getItem("adminToken") != "") {
-            if (adminToken) {
-                headers['Authorization'] = 'Bearer ' + localStorage.getItem('adminToken');
-            }
+            $http.post(url, formData, { headers }).then((response) => {
+                this.handleSuccess(response);
 
-            this.triggerCsrfBypass(this.setting.development).then((token) => {
-                if (this.setting.development)
-                    headers[HEADER_NAME] = token;
-
-                $http.post(url, formData, { headers }).then((response) => {
-                    this.handleSuccess(response);
-
-                    defer.resolve(response.data);
-                }).catch((error) => {
-                    this.handleError(error);
-                });
-            })
+                defer.resolve(response.data);
+            }).catch((error) => {
+                this.handleError(error);
+            });
 
             return defer.promise;
         }
@@ -141,39 +131,13 @@ serviceManager.service("HTTPService", ['$rootScope', '$q', '$http', 'AppConstant
 
             var headers = {}
 
-            // if (this.setting.authenticate && localStorage.getItem("adminToken") != null && localStorage.getItem("adminToken") != "") {
-            if (adminToken) {
-                headers['Authorization'] = 'Bearer ' + localStorage.getItem('adminToken');
-            }
+            $http.post(url, JSON.stringify(jsonData), { headers }).then((response) => {
+                this.handleSuccess(response);
 
-            this.triggerCsrfBypass(this.setting.development).then((token) => {
-                if (this.setting.development)
-                    headers[HEADER_NAME] = token;
-
-                $http.post(url, JSON.stringify(jsonData), { headers }).then((response) => {
-                    this.handleSuccess(response);
-
-                    defer.resolve(response.data);
-                }).catch((error) => {
-                    this.handleError(error);
-                })
-            })
-
-            return defer.promise;
-        }
-        //Development
-        //return a token for AEM csrf
-        this.triggerCsrfBypass = (development) => {
-            var defer = $q.defer();
-
-            $http.get(TOKEN_SERVLET, { "OLA": "HELLO" }).then((response) => {
-                defer.resolve(response.data.token)
+                defer.resolve(response.data);
             }).catch((error) => {
-                // this.handleError(error)
+                this.handleError(error);
             })
-
-            if (!development)
-                defer.resolve()
 
             return defer.promise;
         }
