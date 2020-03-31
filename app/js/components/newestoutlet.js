@@ -1,16 +1,16 @@
 app.component('newestOutlet', {
     // HTML
     template:
-        `<div class="c-newest-outlet" style="background-image: url(/assets/images/outlet-1-ciledug.png);" ng-init="initNewestOutletController()">
+        `<div class="c-newest-outlet" style="background-image: url({{mainBanner['common.newestoutlet.image'][0]['common.newestoutlet.image.path']}});" ng-init="initNewestOutletController()">
             <div class="custom-container">
                 <div class="row">
                     <div class="c-newest-outlet-title-wrapper col-xs-12 col-sm-6">
                         <div class="title-text-wrapper">
                             <img class="quote-1" src="/assets/images/quote-red-01.svg" alt="Quote Red One">
-                            <span class="section-title section-title-1">CABANG GERAI<br>TERBARU KAMI</span>
+                            <span class="section-title section-title-1" ng-bind-html="mainBanner['common.newestoutlet.title'][0]['common.newestoutlet.title.text']"></span>
                             <img class="quote-2" src="/assets/images/quote-red-02.svg" alt="Quote Red Two">
                         </div>
-                        <a href="#" class="d-flex align-items-center c-newest-outlet-target">
+                        <a href="/outlet/outlet.html" class="d-flex align-items-center c-newest-outlet-target">
                             <span>Lihat Selengkapnya</span>
                             <img src="/assets/images/arrow-red.svg" alt="Arrow">
                         </a>
@@ -18,12 +18,11 @@ app.component('newestOutlet', {
                     <div class="col-xs-12 col-sm-6">
                         <div class="c-newest-outlet-carousel-wrapper">
                             <div class="c-newest-outlet-carousel">
-                                <img src="/assets/images/outlet-1-ciledug.png">
+                                <img ng-src="{{mainBanner['common.newestoutlet.image'][0]['common.newestoutlet.image.path']}}">
                             </div>
-                            <span class="outlet-name">SEGOSAREM CAKBOYO cabang Ciledug</span>
-                            <p class="outlet-address"> RT.003/RW.013, Karang Tengah,<br> Kec. Karang Tengah, Kota
-                                <br> Tangerang, Banten 15157</p>
-                            <a href="#" class="d-flex align-items-center outlet-target">
+                            <span class="outlet-name">{{mainBanner['common.newestoutlet.name'][0]['common.newestoutlet.name.text']}}</span>
+                            <p class="outlet-address" ng-bind-html="mainBanner['common.newestoutlet.address'][0]['common.newestoutlet.address.text']"></p>
+                            <a ng-href="{{mainBanner['common.newestoutlet.map'][0]['common.newestoutlet.map.link']}}" target="_blank" class="d-flex align-items-center outlet-target">
                                 <span>Lihat di map</span>
                                 <img src="/assets/images/arrow-red.svg" alt="Arrow">
                             </a>
@@ -47,9 +46,16 @@ app.component('newestOutlet', {
 newestOutletController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppConstant', '$timeout'];
 function newestOutletController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
     //This is the state
-    $scope.newestOutlet = {};
+    $scope.mainBanner = {};
 
     $scope.initNewestOutletController = () => {
-        console.log("Newest outlet component is loaded");
+        let request = {
+            "pageKey": "common"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            if(res.returnCode == "000000") {
+                $scope.mainBanner = res.responseObject.common;
+            }
+        });
     }
 }

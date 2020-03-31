@@ -53,7 +53,7 @@ app.component('trendingMenu', {
                 <!-- gallery row -->
 
                 <div class="trending-menu-link position-relative">
-                    <a href="#" class="d-flex align-items-center trending-menu-target">
+                    <a href="/gallery/gallery.html" class="d-flex align-items-center trending-menu-target">
                         <span>Lihat Selengkapnya</span>
                         <img src="/assets/images/arrow-red.svg" alt="Arrow">
                     </a>
