@@ -32,7 +32,12 @@ app.component('menuList', {
                 <!-- menu title -->
                 <div class="menu-title position-relative">
                     <!-- hot item badge -->
-                    <img class="overlay-trending-logo" src="/assets/images/fire-01.png" alt="" />
+                    <div class="overlay-trending-logo">
+                        <div class="position-relative">
+                            <img src="/assets/images/fire-01.png" alt="" />
+                            <span class="overlay-trending-order">1</span>
+                        </div>
+                    </div>
                     <!-- hot item badge -->
 
                     <h3>Title Makanan</h3>
@@ -59,7 +64,12 @@ app.component('menuList', {
                 <!-- menu title -->
                 <div class="menu-title position-relative">
                     <!-- hot item badge -->
-                    <img class="overlay-trending-logo" src="/assets/images/fire-02.png" alt="" />
+                    <div class="overlay-trending-logo">
+                        <div class="position-relative">
+                            <img src="/assets/images/fire-02.png" alt="" />
+                            <span class="overlay-trending-order">2</span>
+                        </div>
+                    </div>
                     <!-- hot item badge -->
 
                     <h3>Title Makanan</h3>
@@ -86,7 +96,12 @@ app.component('menuList', {
                 <!-- menu title -->
                 <div class="menu-title position-relative">
                     <!-- hot item badge -->
-                    <img class="overlay-trending-logo" src="/assets/images/fire-03.png" alt="" />
+                    <div class="overlay-trending-logo">
+                        <div class="position-relative">
+                            <img src="/assets/images/fire-03.png" alt="" />
+                            <span class="overlay-trending-order">3</span>
+                        </div>
+                    </div>
                     <!-- hot item badge -->
 
                     <h3>Title Makanan</h3>

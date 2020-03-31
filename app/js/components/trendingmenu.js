@@ -22,7 +22,7 @@ app.component('trendingMenu', {
                 <!-- gallery row-->
                 <div class="row">
                     <!-- card col -->
-                    <div class="c-menu-card col-xs-12 col-sm-4" ng-repeat="menu in trendingMenu['homepage.trendingmenu.menu']">
+                    <div class="c-menu-card col-xs-12 col-sm-4" ng-repeat="menu in trendingMenu['homepage.trendingmenu.menu'] | customOrderByKey: 'homepage.trendingmenu.menu.sequence' track by $index">
                         <!-- menu image -->
                         <div class="menu-image">
                             <img ng-src="{{menu['homepage.trendingmenu.menu.image']}}" alt="{{menu['homepage.trendingmenu.menu.title']}}" />
@@ -32,7 +32,12 @@ app.component('trendingMenu', {
                         <!-- menu title -->
                         <div class="menu-title position-relative">
                             <!-- hot item badge -->
-                            <img class="overlay-trending-logo" src="/assets/images/fire-01.png" alt="" />
+                            <div class="overlay-trending-logo">
+                                <div class="position-relative">
+                                    <img class="" src="/assets/images/fire-01.png" alt="" />
+                                    <span class="overlay-trending-order">{{$index + 1}}</span>
+                                </div>
+                            </div>
                             <!-- hot item badge -->
 
                             <h3>{{menu['homepage.trendingmenu.menu.title']}}</h3>
@@ -61,14 +66,14 @@ app.component('trendingMenu', {
     },
     // This is for the controller
     controller: trendingMenuController
-})
+});
 //Please try to write in ES 9 version if possible
 //Declaring main module functions in 'function' is easier to read than lambda expressions
 //Try not to use too much nested loop or nested if/else statement, chances are the code logic have issues
 //Try to revise the code logic. For else if statement, use switch case statement instead
 //Endpoint is at header script
-trendingMenuController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppConstant', '$timeout'];
-function trendingMenuController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
+trendingMenuController.$inject = ['$scope', 'HTTPService'];
+function trendingMenuController($scope, HTTPService) {
     //This is the State
     $scope.trendingMenu = {};
 
@@ -77,10 +82,10 @@ function trendingMenuController($scope, HTTPService, LoadingService, AppConstant
             "pageKey": "homepage"
         }
         HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
-            console.log("Trending menu is loaded with ", res);
             if(res.returnCode == "000000") {
                 $scope.trendingMenu = res.responseObject.homepage;
             }
         });
+
     }
 }

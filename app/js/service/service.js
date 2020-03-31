@@ -105,7 +105,7 @@ serviceManager.service("HTTPService", ['$rootScope', '$q', '$http', 'AppConstant
 
         this.handleError = (error) => {
             //TODO - Handle Failed ajax call
-            alert(AppConstant.ERROR_MSG.GENERAL)
+            // alert(AppConstant.ERROR_MSG.GENERAL)
         }
 
         this.postFormData = (url, formData) => {
@@ -180,3 +180,15 @@ serviceManager.directive("toolTip", function () {
         }
     }
 });
+serviceManager.filter('customOrderByKey', function() {
+    return function(obj, k) {
+        obj.sort((a, b) => {
+            if (a[k] > b[k]) return 1;
+            if (b[k] > a[k]) return -1;
+          
+            return 0;
+        })
+
+        return obj;
+    }
+})

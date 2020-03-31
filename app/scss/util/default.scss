@@ -98,7 +98,18 @@ body {
 
 .overlay-trending-logo {
     position: absolute;
-    max-width: calculateRem(86px);
+    img {
+        max-width: calculateRem(86px);
+    }
+}
+.overlay-trending-order {
+    font-family: "AdamWarrenpro";
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: calculateRem(32px);
+    color: #fff;
 }
 
 @media (min-width: 991px) {
