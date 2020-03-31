@@ -24,6 +24,7 @@ app.component('cHeader', {
         <div class="mobile-menu-overlay d-block d-lg-none" ng-class="{'show': open}">
             <div class="mobile-menu-overlay-links-wrapper">
                 <a ng-class="{'active': isActiveUrl(page.url)}" ng-repeat="page in header.pages" ng-href="{{page.url}}">{{page.label}}</a>
+                <a ng-class="{'active': isActiveUrl(page.url)}" onclick="feLib.trigger_contact_us_modal()">Hubungi Kami</a>
             </div>
         </div>
         <!-- Mobile -->
@@ -56,9 +57,6 @@ function headerController($scope, HTTPService, LoadingService, AppConstant, $tim
         },{
             url: "/about-us/about-us.html",
             label: "Tentang Kami"
-        },{
-            url: "#",
-            label: "Hubungi Kami"
         }]
     };
 
