@@ -12,10 +12,11 @@ function globalFunction(HTTPService, NotificationService, LoadingService, AppCon
     console.log("This is a global function that is run everytime the angular is loaded")
 }
 
-app.controller("HomepageController", homepageController);
+app.controller("HomepageController", homepageController)
+    .controller("GalleryController", galleryController);
 
-homepageController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppConstant', '$timeout'];
-function homepageController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
+homepageController.$inject = ['$scope', 'HTTPService'];
+function homepageController($scope, HTTPService) {
     // This is the state
     $scope.homepage = {};
     $scope.pageSetting = {};
@@ -28,6 +29,25 @@ function homepageController($scope, HTTPService, LoadingService, AppConstant, $t
             console.log("Homepage is loaded with ", res);
             if(res.returnCode == "000000") {
                 $scope.homepage = res.responseObject.homepage;
+                $scope.pageSetting = res.responseObject.pageSetting;
+            }
+        });
+    }
+}
+
+galleryController.$inject = ['$scope', 'HTTPService'];
+function galleryController($scope, HTTPService) {
+    // This is the state
+    $scope.gallery = {};
+    $scope.pageSetting = {};
+
+    $scope.initGalleryController = () => {
+        let request = {
+            "pageKey": "gallery"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            if(res.returnCode == "000000") {
+                $scope.gallery = res.responseObject.gallery;
                 $scope.pageSetting = res.responseObject.pageSetting;
             }
         });
