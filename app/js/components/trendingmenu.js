@@ -78,14 +78,15 @@ function trendingMenuController($scope, HTTPService) {
     $scope.trendingMenu = {};
 
     $scope.initTrendingMenuController = () => {
-        let request = {
-            "pageKey": "homepage"
-        }
-        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+        // let request = {
+        //     "pageKey": "homepage"
+        // }
+        // HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            var res = {"returnCode":"000000","responseObject":{"pageSetting":{"title":"Homepage","description":"Segosarem Cak Boyo adalah brand ayam terenak di Jakarta","seoKeywords":"Sebuah Keywords"},"homepage":{"homepage.trendingmenu.title":[{"homepage.trendingmenu.title.text":"MENU ANDALAN KAMI"}],"homepage.trendingmenu.menu":[{"homepage.trendingmenu.menu.description":"Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong, sambel mantul","homepage.trendingmenu.menu.sequence":"2","homepage.trendingmenu.menu.image":"https://paparadam-assets.sgp1.digitaloceanspaces.com/images/menu/menu-2-lele-ningrat.png","homepage.trendingmenu.menu.title":"Lele Ningrat"},{"homepage.trendingmenu.menu.image":"https://paparadam-assets.sgp1.digitaloceanspaces.com/images/menu/menu-1-ayam-ningrat.png","homepage.trendingmenu.menu.sequence":"1","homepage.trendingmenu.menu.title":"Ayam Ningrat","homepage.trendingmenu.menu.description":"Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong, sambel mantul"},{"homepage.trendingmenu.menu.image":"https://paparadam-assets.sgp1.digitaloceanspaces.com/images/menu/menu-3-bakwan-jagung.png","homepage.trendingmenu.menu.sequence":"3","homepage.trendingmenu.menu.description":"Deskripsi Makanan seperti Adonan tepung dengan jagung-jagung manis","homepage.trendingmenu.menu.title":"Bakwan Jagung"}]}}};
             if(res.returnCode == "000000") {
                 $scope.trendingMenu = res.responseObject.homepage;
             }
-        });
+        // });
 
     }
 }

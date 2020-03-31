@@ -16,7 +16,7 @@ app.component('mainBanner', {
                         </div>
                         <div class="banner-menu-wrapper position-relative" ng-if="props.type == '1'">
                             <img class="quote-1" src="/assets/images/quote-white-01.svg" alt="Quote One">
-                            <img class="banner-menu" src="/assets/images/menu-1-ayam-ningrat.png"
+                            <img class="banner-menu" ng-src="{{props.bannerImage}}"
                                 alt="Main Banner Menu">
                             <img class="quote-2" src="/assets/images/quote-white-02.svg" alt="Quote Two">
                         </div>
@@ -31,8 +31,9 @@ app.component('mainBanner', {
     // & Method binding (although some call it one-way binding)
     // < One-way binding
     bindings: {
-        upperTitle:"@",
-        lowerTitle:"@",
+        upperTitle:"=",
+        lowerTitle:"=",
+        bannerImage: "=",
         type: "@"
     },
     //This is for the controller

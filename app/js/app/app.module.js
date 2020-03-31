@@ -18,6 +18,7 @@ homepageController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppCon
 function homepageController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
     // This is the state
     $scope.homepage = {};
+    $scope.pageSetting = {};
 
     $scope.initHomepageController = () => {
         let request = {
@@ -26,7 +27,8 @@ function homepageController($scope, HTTPService, LoadingService, AppConstant, $t
         HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
             console.log("Homepage is loaded with ", res);
             if(res.returnCode == "000000") {
-                $scope.homepage = res.responseObject.pageSetting;
+                $scope.homepage = res.responseObject.homepage;
+                $scope.pageSetting = res.responseObject.pageSetting;
             }
         });
     }

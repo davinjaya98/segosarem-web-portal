@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{homepage.title}}</title>
-    <meta name="description" ng-attr-content="{{homepage.description}}">
-    <meta name="keywords" ng-attr-content="{{homepage.seoKeywords}}">
+    <title>{{pageSetting.title}}</title>
+    <meta name="description" ng-attr-content="{{pageSetting.description}}">
+    <meta name="keywords" ng-attr-content="{{pageSetting.seoKeywords}}">
     <base href="/">
     <script src="/assets/js/vendor.js"></script>
     <script src="/assets/js/main.js"></script>
@@ -21,7 +21,7 @@
     <div class="content">
         <!-- Main Banner -->
         <section>
-            <main-banner upper-title="NASI SAMBEL" lower-title="SIREM CAKBOYO" type="1"></main-banner>
+            <main-banner upper-title="homepage['homepage.mainbanner.title1'][0]['homepage.mainbanner.title1.text']" lower-title="homepage['homepage.mainbanner.title2'][0]['homepage.mainbanner.title2.text']" banner-image="homepage['homepage.mainbanner.image'][0]['homepage.mainbanner.image.path']" type="1"></main-banner>
         </section>
         <!-- Main Banner -->
 
