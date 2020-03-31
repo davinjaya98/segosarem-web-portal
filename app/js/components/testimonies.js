@@ -30,9 +30,17 @@ app.component('cTestimonies', {
 testimoniesController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppConstant', '$timeout'];
 function testimoniesController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
     //This is the State
-    $scope.contactUs = {};
+    $scope.testimonies = {};
 
     $scope.initTestimoniesController = () => {
-        console.log("Testimonies component is loaded");
+        let request = {
+            "pageKey": "aboutus"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            console.log("Testimonies loaded with ", res);
+            if (res.returnCode == "000000") {
+                $scope.features = res.responseObject.aboutus;
+            }
+        });
     }
 }

@@ -6,32 +6,18 @@ app.component('cFeatures', {
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="c-features-title-wrapper">
-                            <span class="section-title section-title-1">KUALITAS TERBAIK</span><br>
-                            <span class="section-title section-title-2">UNTUK PELANGGAN</span>
+                            <span class="section-title section-title-1">{{features['aboutus.features.title1'][0]['aboutus.features.title1.text']}}</span><br>
+                            <span class="section-title section-title-2">{{features['aboutus.features.title2'][0]['aboutus.features.title2.text']}}</span>
                             <img class="underline" src="/assets/images/underline-red.svg" alt="underline" />
                         </div>
                     </div>
                 </div>
                 <div class="row c-features-list-wrapper">
-                    <div class="col-xs-12 col-sm-4">
+                    <div class="col-xs-12 col-sm-4" ng-repeat="feature in features['aboutus.features.card']">
                         <div class="features">
-                            <img src="/assets/images/star-review-icon.png" alt="Features One">
-                            <h3>4,5 dari 5 Bintang</h3>
-                            <span>Review kami di GoFood<br>& GrabFood</span>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="features">
-                            <img src="/assets/images/like-quality-icon.png" alt="Features One">
-                            <h3>Kualitas Terjaga</h3>
-                            <span>Kebersihan dan qualitas bahan<br>adalah prioritas kami</span>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="features">
-                            <img src="/assets/images/best-service-icon.png" alt="Features One">
-                            <h3>Pelayanan Terbaik</h3>
-                            <span>Selalu menyambut anda<br>dengan senyum</span>
+                            <img ng-src="{{feature['aboutus.features.card.imgpath']}}" alt="{{feature['aboutus.features.card.title']}}">
+                            <h3>{{feature['aboutus.features.card.title']}}</h3>
+                            <span>{{feature['aboutus.features.card.desc']}}</span>
                         </div>
                     </div>
                 </div>
@@ -52,9 +38,16 @@ app.component('cFeatures', {
 featuresController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppConstant', '$timeout'];
 function featuresController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
     //This is the State
-    $scope.contactUs = {};
+    $scope.features = {};
 
     $scope.initFeaturesController = () => {
-        console.log("Features component is loaded");
+        let request = {
+            "pageKey": "aboutus"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            if (res.returnCode == "000000") {
+                $scope.features = res.responseObject.aboutus;
+            }
+        });
     }
 }

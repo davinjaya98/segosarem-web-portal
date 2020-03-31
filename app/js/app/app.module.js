@@ -13,7 +13,8 @@ function globalFunction(HTTPService, NotificationService, LoadingService, AppCon
 }
 
 app.controller("HomepageController", homepageController)
-    .controller("GalleryController", galleryController);
+    .controller("GalleryController", galleryController)
+    .controller("AboutUsController", aboutUsController);
 
 homepageController.$inject = ['$scope', 'HTTPService'];
 function homepageController($scope, HTTPService) {
@@ -27,7 +28,7 @@ function homepageController($scope, HTTPService) {
         }
         HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
             console.log("Homepage is loaded with ", res);
-            if(res.returnCode == "000000") {
+            if (res.returnCode == "000000") {
                 $scope.homepage = res.responseObject.homepage;
                 $scope.pageSetting = res.responseObject.pageSetting;
             }
@@ -46,8 +47,26 @@ function galleryController($scope, HTTPService) {
             "pageKey": "gallery"
         }
         HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
-            if(res.returnCode == "000000") {
+            if (res.returnCode == "000000") {
                 $scope.gallery = res.responseObject.gallery;
+                $scope.pageSetting = res.responseObject.pageSetting;
+            }
+        });
+    }
+}
+
+aboutUsController.$inject = ['$scope', 'HTTPService'];
+function aboutUsController($scope, HTTPService) {
+    $scope.aboutus = {};
+    $scope.pageSetting = {};
+
+    $scope.initAboutUsController = () => {
+        let request = {
+            "pageKey": "aboutus"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            if (res.returnCode == "000000") {
+                $scope.aboutus = res.responseObject.aboutus;
                 $scope.pageSetting = res.responseObject.pageSetting;
             }
         });
