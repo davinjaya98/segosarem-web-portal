@@ -34,7 +34,7 @@ app.component('trendingMenu', {
                             <!-- hot item badge -->
                             <div class="overlay-trending-logo">
                                 <div class="position-relative">
-                                    <img class="" src="/assets/images/fire-01.png" alt="" />
+                                    <img class="" src="/assets/images/fire.png" alt="" />
                                     <span class="overlay-trending-order">{{$index + 1}}</span>
                                 </div>
                             </div>
