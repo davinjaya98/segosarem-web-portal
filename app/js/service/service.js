@@ -182,12 +182,14 @@ serviceManager.directive("toolTip", function () {
 });
 serviceManager.filter('customOrderByKey', function() {
     return function(obj, k) {
-        obj.sort((a, b) => {
-            if (a[k] > b[k]) return 1;
-            if (b[k] > a[k]) return -1;
-          
-            return 0;
-        })
+        if(obj) {
+            obj.sort((a, b) => {
+                if (a[k] > b[k]) return 1;
+                if (b[k] > a[k]) return -1;
+              
+                return 0;
+            });
+        }
 
         return obj;
     }

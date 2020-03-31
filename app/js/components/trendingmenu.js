@@ -22,10 +22,10 @@ app.component('trendingMenu', {
                 <!-- gallery row-->
                 <div class="row">
                     <!-- card col -->
-                    <div class="c-menu-card col-xs-12 col-sm-4" ng-repeat="menu in trendingMenu['homepage.trendingmenu.menu'] | customOrderByKey: 'homepage.trendingmenu.menu.sequence' track by $index">
+                    <div class="c-menu-card col-xs-12 col-sm-4" ng-repeat="menu in trendingMenu['gallery.menulist.menu'] | customOrderByKey: 'gallery.menulist.menu.sequence' | excludeNonTrending track by $index">
                         <!-- menu image -->
                         <div class="menu-image">
-                            <img ng-src="{{menu['homepage.trendingmenu.menu.image']}}" alt="{{menu['homepage.trendingmenu.menu.title']}}" />
+                            <img ng-src="{{menu['gallery.menulist.menu.image']}}" alt="{{menu['gallery.menulist.menu.title']}}" />
                         </div>
                         <!-- menu image -->
 
@@ -40,12 +40,12 @@ app.component('trendingMenu', {
                             </div>
                             <!-- hot item badge -->
 
-                            <h3>{{menu['homepage.trendingmenu.menu.title']}}</h3>
+                            <h3>{{menu['gallery.menulist.menu.title']}}</h3>
                         </div>
                         <!-- menu title -->
 
                         <!-- menu desc -->
-                        <p>{{menu['homepage.trendingmenu.menu.description']}}</p>
+                        <p>{{menu['gallery.menulist.menu.description']}}</p>
                         <!-- menu desc -->
                     </div>
                     <!-- card col -->
@@ -66,6 +66,13 @@ app.component('trendingMenu', {
     },
     // This is for the controller
     controller: trendingMenuController
+}).filter('excludeNonTrending', () => {
+    return (obj) => {
+        if(obj) {
+            obj = obj.filter(x => x['gallery.menulist.menu.trending'] == 'true');
+        }
+        return obj;
+    }
 });
 //Please try to write in ES 9 version if possible
 //Declaring main module functions in 'function' is easier to read than lambda expressions
@@ -78,15 +85,16 @@ function trendingMenuController($scope, HTTPService) {
     $scope.trendingMenu = {};
 
     $scope.initTrendingMenuController = () => {
-        // let request = {
-        //     "pageKey": "homepage"
-        // }
-        // HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
-            var res = {"returnCode":"000000","responseObject":{"pageSetting":{"title":"Homepage","description":"Segosarem Cak Boyo adalah brand ayam terenak di Jakarta","seoKeywords":"Sebuah Keywords"},"homepage":{"homepage.trendingmenu.title":[{"homepage.trendingmenu.title.text":"MENU ANDALAN KAMI"}],"homepage.trendingmenu.menu":[{"homepage.trendingmenu.menu.description":"Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong, sambel mantul","homepage.trendingmenu.menu.sequence":"2","homepage.trendingmenu.menu.image":"https://paparadam-assets.sgp1.digitaloceanspaces.com/images/menu/menu-2-lele-ningrat.png","homepage.trendingmenu.menu.title":"Lele Ningrat"},{"homepage.trendingmenu.menu.image":"https://paparadam-assets.sgp1.digitaloceanspaces.com/images/menu/menu-1-ayam-ningrat.png","homepage.trendingmenu.menu.sequence":"1","homepage.trendingmenu.menu.title":"Ayam Ningrat","homepage.trendingmenu.menu.description":"Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong, sambel mantul"},{"homepage.trendingmenu.menu.image":"https://paparadam-assets.sgp1.digitaloceanspaces.com/images/menu/menu-3-bakwan-jagung.png","homepage.trendingmenu.menu.sequence":"3","homepage.trendingmenu.menu.description":"Deskripsi Makanan seperti Adonan tepung dengan jagung-jagung manis","homepage.trendingmenu.menu.title":"Bakwan Jagung"}]}}};
+        let request = {
+            "pageKey": "homepage,gallery"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            //var res = {"returnCode":"000000","responseObject":{"pageSetting":{"title":"Homepage","description":"Segosarem Cak Boyo adalah brand ayam terenak di Jakarta","seoKeywords":"Sebuah Keywords"},"homepage":{"homepage.trendingmenu.title":[{"homepage.trendingmenu.title.text":"MENU ANDALAN KAMI"}],"homepage.trendingmenu.menu":[{"homepage.trendingmenu.menu.description":"Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong, sambel mantul","homepage.trendingmenu.menu.sequence":"2","homepage.trendingmenu.menu.image":"https://paparadam-assets.sgp1.digitaloceanspaces.com/images/menu/menu-2-lele-ningrat.png","homepage.trendingmenu.menu.title":"Lele Ningrat"},{"homepage.trendingmenu.menu.image":"https://paparadam-assets.sgp1.digitaloceanspaces.com/images/menu/menu-1-ayam-ningrat.png","homepage.trendingmenu.menu.sequence":"1","homepage.trendingmenu.menu.title":"Ayam Ningrat","homepage.trendingmenu.menu.description":"Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong, sambel mantul"},{"homepage.trendingmenu.menu.image":"https://paparadam-assets.sgp1.digitaloceanspaces.com/images/menu/menu-3-bakwan-jagung.png","homepage.trendingmenu.menu.sequence":"3","homepage.trendingmenu.menu.description":"Deskripsi Makanan seperti Adonan tepung dengan jagung-jagung manis","homepage.trendingmenu.menu.title":"Bakwan Jagung"}]}}};
             if(res.returnCode == "000000") {
-                $scope.trendingMenu = res.responseObject.homepage;
+                $scope.trendingMenu = res.responseObject.gallery;
+                $scope.trendingMenu['homepage.trendingmenu.title'] = res.responseObject.homepage['homepage.trendingmenu.title'];
             }
-        // });
+        });
 
     }
 }

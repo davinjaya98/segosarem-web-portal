@@ -3,283 +3,56 @@ app.component('menuList', {
     template:
         `<div class="c-menu-list" ng-init="initMenuListController()">
             <div class="custom-container position-relative">
-            <!-- chilli masala -->
-            <img class="overlay-chilli" src="/assets/images/chilly-masala.png" alt="">
-            <!-- chilli masala -->
+                <!-- chilli masala -->
+                <img class="overlay-chilli" src="/assets/images/chilly-masala.png" alt="">
+                <!-- chilli masala -->
 
-            <!-- menu list title -->
-            <div class="menu-list-title">
-                <!-- title string -->
-                <h1>SEMUA MENU MAKANAN</h1>
-                <!-- title string -->
+                <!-- menu list title -->
+                <div class="menu-list-title">
+                    <!-- title string -->
+                    <h1>SEMUA MENU MAKANAN</h1>
+                    <!-- title string -->
 
-                <!-- underline -->
-                <img class="underline" src="/assets/images/underline-red.svg" alt="underline" />
-                <!-- underline -->
-            </div>
-            <!-- menu list title -->
-
-            <!-- gallery row-->
-            <div class="row">
-                <!-- card col -->
-                <div class="c-menu-card col-xs-12 col-sm-4">
-                <!-- menu image -->
-                <div class="menu-image">
-                    <img src="/assets/images/img-01@2x.png" alt="" />
+                    <!-- underline -->
+                    <img class="underline" src="/assets/images/underline-red.svg" alt="underline" />
+                    <!-- underline -->
                 </div>
-                <!-- menu image -->
+                <!-- menu list title -->
 
-                <!-- menu title -->
-                <div class="menu-title position-relative">
-                    <!-- hot item badge -->
-                    <div class="overlay-trending-logo">
-                        <div class="position-relative">
-                            <img src="/assets/images/fire-01.png" alt="" />
-                            <span class="overlay-trending-order">1</span>
+                <!-- gallery row-->
+                <div class="row">
+
+                    <!-- card col -->
+                    <div class="c-menu-card col-xs-12 col-sm-4" ng-repeat="menu in menuList['gallery.menulist.menu'] | customOrderByKey: 'gallery.menulist.menu.sequence' track by $index">
+                        <!-- menu image -->
+                        <div class="menu-image">
+                            <img ng-src="{{menu['gallery.menulist.menu.image']}}" alt="{{menu['gallery.menulist.menu.title']}}" />
                         </div>
-                    </div>
-                    <!-- hot item badge -->
+                        <!-- menu image -->
 
-                    <h3>Title Makanan</h3>
-                </div>
-                <!-- menu title -->
+                        <!-- menu title -->
+                        <div class="menu-title position-relative">
+                            <!-- hot item badge -->
+                            <div class="overlay-trending-logo" ng-if="menu['gallery.menulist.menu.trending'] == 'true'">
+                                <div class="position-relative">
+                                    <img class="" src="/assets/images/fire.png" alt="" />
+                                    <span class="overlay-trending-order">{{$index + 1}}</span>
+                                </div>
+                            </div>
+                            <!-- hot item badge -->
 
-                <!-- menu desc -->
-                <p>
-                    Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                    sambel mantul
-                </p>
-                <!-- menu desc -->
-                </div>
-                <!-- card col -->
-
-                <!-- card col -->
-                <div class="c-menu-card col-xs-12 col-sm-4">
-                <!-- menu image -->
-                <div class="menu-image">
-                    <img src="/assets/images/img-01@2x.png" alt="" />
-                </div>
-                <!-- menu image -->
-
-                <!-- menu title -->
-                <div class="menu-title position-relative">
-                    <!-- hot item badge -->
-                    <div class="overlay-trending-logo">
-                        <div class="position-relative">
-                            <img src="/assets/images/fire-02.png" alt="" />
-                            <span class="overlay-trending-order">2</span>
+                            <h3>{{menu['gallery.menulist.menu.title']}}</h3>
                         </div>
+                        <!-- menu title -->
+
+                        <!-- menu desc -->
+                        <p>{{menu['gallery.menulist.menu.description']}}</p>
+                        <!-- menu desc -->
                     </div>
-                    <!-- hot item badge -->
+                    <!-- card col -->
 
-                    <h3>Title Makanan</h3>
                 </div>
-                <!-- menu title -->
-
-                <!-- menu desc -->
-                <p>
-                    Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                    sambel mantul
-                </p>
-                <!-- menu desc -->
-                </div>
-                <!-- card col -->
-
-                <!-- card col -->
-                <div class="c-menu-card col-xs-12 col-sm-4">
-                <!-- menu image -->
-                <div class="menu-image">
-                    <img src="/assets/images/img-01@2x.png" alt="" />
-                </div>
-                <!-- menu image -->
-
-                <!-- menu title -->
-                <div class="menu-title position-relative">
-                    <!-- hot item badge -->
-                    <div class="overlay-trending-logo">
-                        <div class="position-relative">
-                            <img src="/assets/images/fire-03.png" alt="" />
-                            <span class="overlay-trending-order">3</span>
-                        </div>
-                    </div>
-                    <!-- hot item badge -->
-
-                    <h3>Title Makanan</h3>
-                </div>
-                <!-- menu title -->
-
-                <!-- menu desc -->
-                <p>
-                    Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                    sambel mantul
-                </p>
-                <!-- menu desc -->
-                </div>
-                <!-- card col -->
-
-                <!-- card col -->
-                <div class="c-menu-card col-xs-12 col-sm-4">
-                <!-- menu image -->
-                <div class="menu-image">
-                    <img src="/assets/images/img-01@2x.png" alt="" />
-                </div>
-                <!-- menu image -->
-
-                <!-- menu title -->
-                <div class="menu-title position-relative">
-                    <!-- hot item badge -->
-                    <img class="overlay-trending-logo" src="/assets/images/fire-03.png" alt="" hidden />
-                    <!-- hot item badge -->
-
-                    <h3>Title Makanan</h3>
-                </div>
-                <!-- menu title -->
-
-                <!-- menu desc -->
-                <p>
-                    Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                    sambel mantul
-                </p>
-                <!-- menu desc -->
-                </div>
-                <!-- card col -->
-
-                <!-- card col -->
-                <div class="c-menu-card col-xs-12 col-sm-4">
-                <!-- menu image -->
-                <div class="menu-image">
-                    <img src="/assets/images/img-01@2x.png" alt="" />
-                </div>
-                <!-- menu image -->
-
-                <!-- menu title -->
-                <div class="menu-title position-relative">
-                    <!-- hot item badge -->
-                    <img class="overlay-trending-logo" src="/assets/images/fire-01.png" alt="" hidden />
-                    <!-- hot item badge -->
-
-                    <h3>Title Makanan</h3>
-                </div>
-                <!-- menu title -->
-
-                <!-- menu desc -->
-                <p>
-                    Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                    sambel mantul
-                </p>
-                <!-- menu desc -->
-                </div>
-                <!-- card col -->
-
-                <!-- card col -->
-                <div class="c-menu-card col-xs-12 col-sm-4">
-                <!-- menu image -->
-                <div class="menu-image">
-                    <img src="/assets/images/img-01@2x.png" alt="" />
-                </div>
-                <!-- menu image -->
-
-                <!-- menu title -->
-                <div class="menu-title position-relative">
-                    <!-- hot item badge -->
-                    <img class="overlay-trending-logo" src="/assets/images/fire-01.png" alt="" hidden />
-                    <!-- hot item badge -->
-
-                    <h3>Title Makanan</h3>
-                </div>
-                <!-- menu title -->
-
-                <!-- menu desc -->
-                <p>
-                    Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                    sambel mantul
-                </p>
-                <!-- menu desc -->
-                </div>
-                <!-- card col -->
-
-                <!-- card col -->
-                <div class="c-menu-card col-xs-12 col-sm-4">
-                <!-- menu image -->
-                <div class="menu-image">
-                    <img src="/assets/images/img-01@2x.png" alt="" />
-                </div>
-                <!-- menu image -->
-
-                <!-- menu title -->
-                <div class="menu-title position-relative">
-                    <!-- hot item badge -->
-                    <img class="overlay-trending-logo" src="/assets/images/fire-01.png" alt="" hidden />
-                    <!-- hot item badge -->
-
-                    <h3>Title Makanan</h3>
-                </div>
-                <!-- menu title -->
-
-                <!-- menu desc -->
-                <p>
-                    Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                    sambel mantul
-                </p>
-                <!-- menu desc -->
-                </div>
-                <!-- card col -->
-
-                <!-- card col -->
-                <div class="c-menu-card col-xs-12 col-sm-4">
-                <!-- menu image -->
-                <div class="menu-image">
-                    <img src="/assets/images/img-01@2x.png" alt="" />
-                </div>
-                <!-- menu image -->
-
-                <!-- menu title -->
-                <div class="menu-title position-relative">
-                    <!-- hot item badge -->
-                    <img class="overlay-trending-logo" src="/assets/images/fire-01.png" alt="" hidden />
-                    <!-- hot item badge -->
-
-                    <h3>Title Makanan</h3>
-                </div>
-                <!-- menu title -->
-
-                <!-- menu desc -->
-                <p>
-                    Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                    sambel mantul
-                </p>
-                <!-- menu desc -->
-                </div>
-                <!-- card col -->
-
-                <!-- card col -->
-                <div class="c-menu-card col-xs-12 col-sm-4">
-                <!-- menu image -->
-                <div class="menu-image">
-                    <img src="/assets/images/img-01@2x.png" alt="" />
-                </div>
-                <!-- menu image -->
-
-                <!-- menu title -->
-                <div class="menu-title position-relative">
-                    <!-- hot item badge -->
-                    <img class="overlay-trending-logo" src="/assets/images/fire-01.png" alt="" hidden />
-                    <!-- hot item badge -->
-
-                    <h3>Title Makanan</h3>
-                </div>
-                <!-- menu title -->
-
-                <!-- menu desc -->
-                <p>
-                    Deskripsi Makanan seperti Ayam, bakwan jagung, daun singkong,
-                    sambel mantul
-                </p>
-                <!-- menu desc -->
-                </div>
-                <!-- card col -->
-            </div>
-            <!-- gallery row -->
+                <!-- gallery row -->
             </div>
         </div>`,
 
@@ -301,6 +74,13 @@ function menuListController($scope, HTTPService, LoadingService, AppConstant, $t
     $scope.menuList = {};
 
     $scope.initMenuListController = () => {
-        console.log("Menu list is loaded");
+        let request = {
+            "pageKey": "gallery"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            if(res.returnCode == "000000") {
+                $scope.menuList = res.responseObject.gallery;
+            }
+        });
     }
 }

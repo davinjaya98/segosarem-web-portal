@@ -7,7 +7,7 @@ app.component('aboutUsSnippet', {
                 <div class="c-about-us-target-wrapper col-xs-12 col-sm-6">
                 <h3>{{aboutUsSnippet['common.aboutus.title'][0]['common.aboutus.title.text']}}</h3>
                 <p>{{aboutUsSnippet['common.aboutus.description'][0]['common.aboutus.description.text']}}</p>
-                <a href="#" class="d-flex align-items-center c-about-us-target">
+                <a href="/about-us/about-us.html" class="d-flex align-items-center c-about-us-target">
                     <span>Lihat Selengkapnya</span>
                     <img src="/assets/images/arrow-red.svg" alt="Arrow" />
                 </a>

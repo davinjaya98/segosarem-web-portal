@@ -6,6 +6,7 @@ app.component('cHeader', {
                 <!-- Desktop -->
                 <div class="d-none d-lg-flex desktop-menu">
                     <a ng-class="{'active': isActiveUrl(page.url)}" ng-repeat="page in header.pages" ng-href="{{page.url}}">{{page.label}}</a>
+                    <a onclick="feLib.trigger_contact_us_modal()">Hubungi Kami</a>
                 </div>
                 <!-- Desktop -->
                 <!-- Mobile -->
@@ -24,7 +25,7 @@ app.component('cHeader', {
         <div class="mobile-menu-overlay d-block d-lg-none" ng-class="{'show': open}">
             <div class="mobile-menu-overlay-links-wrapper">
                 <a ng-class="{'active': isActiveUrl(page.url)}" ng-repeat="page in header.pages" ng-href="{{page.url}}">{{page.label}}</a>
-                <a ng-class="{'active': isActiveUrl(page.url)}" onclick="feLib.trigger_contact_us_modal()">Hubungi Kami</a>
+                <a onclick="feLib.trigger_contact_us_modal()">Hubungi Kami</a>
             </div>
         </div>
         <!-- Mobile -->
