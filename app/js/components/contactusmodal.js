@@ -15,20 +15,20 @@ app.component('contactUsModal', {
                         <div class="form-group">
                             <div class="input-group">
                                 <img class="prepend-position-1" src="/assets/images/mail.svg">
-                                <input name="email" type="email" placeholder="example@gmail.com" required>
+                                <input name="email" type="email" placeholder="example@gmail.com" ng-model="contactUs.email" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <img class="prepend-position-1" src="/assets/images/phone.svg">
                                 <span class="prepend-position-2">+62</span>
-                                <input name="phoneNumber" type="text" placeholder="81234567890" numeric required>
+                                <input name="phoneNumber" type="text" placeholder="81234567890" ng-model="contactUs.phoneNumber" numeric required>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <img class="prepend-position-1" src="/assets/images/user.svg">
-                                <input name="name" type="text" placeholder="Nama Lengkap" required>
+                                <input name="name" type="text" placeholder="Nama Lengkap" ng-model="contactUs.name" required>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -74,23 +74,45 @@ app.component('contactUsModal', {
 contactUsModalController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppConstant', '$timeout'];
 function contactUsModalController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
     //This is the State
-    $scope.contactUs = {};
+    $scope.contactUs = {
+        email: "",
+        phoneNumber: "",
+        name: ""
+    };
 
     $scope.initContactUsModalController = () => {
-        console.log("Modal is loaded");
     }
     $scope.registerCloseModalEvent = () => {
-        console.log("Registering close modal event");
         //Attach the event to close modal
         $(".c-contact-us-modal").on($.modal.AFTER_CLOSE, function(event, modal) {
-            console.log("Modal is closed");
             $timeout(() => {
                 $scope.submitted = false;
             });
         });
     }
     $scope.submitContactUs = () => {
-        console.log("Submitted");
-        $scope.submitted = true;
+        let request = {
+            "custEmail": $scope.contactUs.email,
+            "custName": $scope.contactUs.name,
+            "custPhoneNumber": $scope.contactUs.phoneNumber
+          }
+        HTTPService.postJson("/segosarem-backend/addQuotation", request).then((res) => {
+            if(res.returnCode == "000000") {
+                $scope.submitted = true;
+
+                resetForm();
+            }
+        });
+    }
+
+    function resetForm() {
+        //Reset form
+        $timeout(() => {
+            $scope.contactUs = {
+                email: "",
+                phoneNumber: "",
+                name: ""
+            };
+        });
     }
 }

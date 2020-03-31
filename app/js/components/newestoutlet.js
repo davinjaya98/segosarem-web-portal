@@ -43,8 +43,8 @@ app.component('newestOutlet', {
 //Try not to use too much nested loop or nested if/else statement, chances are the code logic have issues
 //Try to revise the code logic. For else if statement, use switch case statement instead
 //Endpoint is at header script
-newestOutletController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppConstant', '$timeout'];
-function newestOutletController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
+newestOutletController.$inject = ['$scope', 'HTTPService'];
+function newestOutletController($scope, HTTPService) {
     //This is the state
     $scope.mainBanner = {};
 

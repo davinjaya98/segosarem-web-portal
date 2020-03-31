@@ -68,8 +68,8 @@ app.component('menuList', {
 //Try not to use too much nested loop or nested if/else statement, chances are the code logic have issues
 //Try to revise the code logic. For else if statement, use switch case statement instead
 //Endpoint is at header script
-menuListController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppConstant', '$timeout'];
-function menuListController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
+menuListController.$inject = ['$scope', 'HTTPService'];
+function menuListController($scope, HTTPService) {
     //This is the state
     $scope.menuList = {};
 
