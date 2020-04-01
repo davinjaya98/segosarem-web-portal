@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="SegosaremWebPortal">
+<html lang="en" ng-app="SegosaremWebPortal" ng-controller="OutletController">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Outlet</title>
+    <title>{{pageSetting.title}}</title>
+    <meta name="description" ng-attr-content="{{pageSetting.description}}">
+    <meta name="keywords" ng-attr-content="{{pageSetting.seoKeywords}}">
     <base href="/" />
     <script src="/assets/js/vendor.js"></script>
     <script src="/assets/js/main.js"></script>
@@ -12,7 +14,7 @@
     <link rel="stylesheet" href="/assets/css/main.css" />
 </head>
 
-<body>
+<body ng-init="initOutletController()">
     <!-- Header -->
     <c-header></c-header>
     <!-- Header -->
@@ -21,7 +23,9 @@
     <div class="content">
         <!-- Main Banner -->
         <section>
-            <main-banner upper-title="GERAI CABANG" lower-title="NASI SAMBAL SIREM CAKBOYO" type="2"></main-banner>
+            <main-banner upper-title="outlet['outlet.mainbanner.title1'][0]['outlet.mainbanner.title1.text']"
+                lower-title="outlet['outlet.mainbanner.title2'][0]['outlet.mainbanner.title2.text']" type="2">
+            </main-banner>
         </section>
         <!-- Main Banner -->
 

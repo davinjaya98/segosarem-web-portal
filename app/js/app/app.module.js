@@ -14,7 +14,8 @@ function globalFunction(HTTPService, NotificationService, LoadingService, AppCon
 
 app.controller("HomepageController", homepageController)
     .controller("GalleryController", galleryController)
-    .controller("AboutUsController", aboutUsController);
+    .controller("AboutUsController", aboutUsController)
+    .controller("OutletController", outletController);
 
 homepageController.$inject = ['$scope', 'HTTPService'];
 function homepageController($scope, HTTPService) {
@@ -67,6 +68,26 @@ function aboutUsController($scope, HTTPService) {
         HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
             if (res.returnCode == "000000") {
                 $scope.aboutus = res.responseObject.aboutus;
+                $scope.pageSetting = res.responseObject.pageSetting;
+            }
+        });
+    }
+}
+
+outletController.$inject = ['$scope', 'HTTPService'];
+function outletController($scope, HTTPService) {
+    $scope.outlet = {};
+    $scope.pageSetting = {};
+    console.log("outlet controller called");
+
+    $scope.initOutletController = () => {
+        let request = {
+            "pageKey": "outlet"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            console.log("outlet json sent");
+            if (res.returnCode == "000000") {
+                $scope.outlet = res.responseObject.outlet;
                 $scope.pageSetting = res.responseObject.pageSetting;
             }
         });
