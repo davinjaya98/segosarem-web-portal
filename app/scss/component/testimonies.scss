@@ -1,20 +1,22 @@
 .c-testimonies {
     background-color: $color-brick;
     padding-top: calculateRem(141px);
-    padding-bottom: calculateRem(89px);
+    padding-bottom: calculateRem(25px);
     position: relative;
     .c-testimonies-image {
         position: absolute;
         top: 0;
         left: 50%;
         transform: translate(-50%, -78px);
+        width: calculateRem(156px);
         img {
-            width: calculateRem(156px);
+            width: 100%;
         }
     }
     .c-testimonies-carousel {
         .testimony {
             text-align: center;
+            outline: 0;
             .description {
                 display: block;
                 font-size: calculateRem(21px);
@@ -44,6 +46,37 @@
                 }
                 @media (min-width: 991px) {
                     font-size: calculateRem(24px);
+                }
+            }
+        }
+        // Slick
+        .slick-dots {
+            margin-top: calculateRem(53px);
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            justify-content: center;
+            li {
+                margin-right: calculateRem(8px);
+                display: flex;
+                button {
+                    cursor: pointer;
+                    color: transparent;
+                    background: white;
+                    border: 0;
+                    padding: 0;
+                    outline: 0;
+                    border-radius: 100%;
+                    width: calculateRem(10px);
+                    height: calculateRem(10px);    
+                    transition: .5s;            
+                }
+                &.slick-active {
+                    button {
+                        background: $color-fff-300;
+                        width: calculateRem(33px);
+                        border-radius: calculateRem(8px);
+                    }
                 }
             }
         }

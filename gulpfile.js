@@ -14,6 +14,7 @@ var jsVendors = [
     `${vendorResourcePath}jquery/dist/jquery.js`,
     `${vendorResourcePath}moment/moment.js`,
     // `${vendorResourcePath}animejs/lib/anime.js`,
+    `${vendorResourcePath}slick-carousel/slick/slick.min.js`,
     `${vendorResourcePath}jquery-modal/jquery.modal.js`
 ];
 
