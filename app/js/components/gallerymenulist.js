@@ -10,7 +10,7 @@ app.component('menuList', {
                 <!-- menu list title -->
                 <div class="menu-list-title">
                     <!-- title string -->
-                    <h1>SEMUA MENU MAKANAN</h1>
+                    <h1>{{menuList['gallery.menulist.title'][0]['gallery.menulist.title.text']}}</h1>
                     <!-- title string -->
 
                     <!-- underline -->
