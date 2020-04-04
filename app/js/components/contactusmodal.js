@@ -1,12 +1,12 @@
 app.component('contactUsModal', {
     //This is the HTML
-    template: 
+    template:
         `<div class="c-contact-us-modal modal" ng-init="initContactUsModalController()">
             <!--Fill submit flow-->
             <div class="form-start" ng-if="!submitted">
                 <div class="modal-title">
                     <div class="modal-title-wrapper">
-                        <span class="title">Berminat untuk <br>kerja sama?</span>
+                        <span class="title" ng-bind-html="contactUsModal['common.contactusmodal.formtitle'][0]['common.contactusmodal.formtitle.text']"></span>
                     </div>
                     <a class="close" rel="modal:close"><img src="/assets/images/close-white.svg" alt="Close Modal Image"></a>
                 </div>
@@ -43,13 +43,13 @@ app.component('contactUsModal', {
                 <div class="modal-title">
                     <div class="modal-title-wrapper">
                         <img src="/assets/images/sent.png" alt="Sent Image">
-                        <span class="title">Okeh, Kami akan segera menghubungi anda.</span>
+                        <span class="title">{{contactUsModal['common.contactusmodal.successtitle'][0]['common.contactusmodal.successtitle.text']}}</span>
                     </div>
                     <a class="close" rel="modal:close"><img src="/assets/images/close-white.svg" alt="Close Modal Image"></a>
                 </div>
                 <div class="modal-content">
                     <div class="contact-us-text">
-                        <p>Terima kasih atas kepercayaan anda (ɔ◔‿◔)ɔ ♥</p>
+                        <p>{{contactUsModal['common.contactusmodal.successmessage'][0]['common.contactusmodal.successmessage.text']}}</p>
                     </div>
                     <div class="modal-footer">
                         <div></div>
@@ -80,11 +80,21 @@ function contactUsModalController($scope, HTTPService, LoadingService, AppConsta
         name: ""
     };
 
+    $scope.contactUsModal = {};
+
     $scope.initContactUsModalController = () => {
+        let request = {
+            "pageKey": "common"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            if (res.returnCode == "000000") {
+                $scope.contactUsModal = res.responseObject.common;
+            }
+        });
     }
     $scope.registerCloseModalEvent = () => {
         //Attach the event to close modal
-        $(".c-contact-us-modal").on($.modal.AFTER_CLOSE, function(event, modal) {
+        $(".c-contact-us-modal").on($.modal.AFTER_CLOSE, function (event, modal) {
             $timeout(() => {
                 $scope.submitted = false;
             });
@@ -95,9 +105,9 @@ function contactUsModalController($scope, HTTPService, LoadingService, AppConsta
             "custEmail": $scope.contactUs.email,
             "custName": $scope.contactUs.name,
             "custPhoneNumber": $scope.contactUs.phoneNumber
-          }
+        }
         HTTPService.postJson("/segosarem-backend/addQuotation", request).then((res) => {
-            if(res.returnCode == "000000") {
+            if (res.returnCode == "000000") {
                 $scope.submitted = true;
 
                 resetForm();
