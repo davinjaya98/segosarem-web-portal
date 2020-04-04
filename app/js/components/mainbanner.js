@@ -8,17 +8,17 @@ app.component('mainBanner', {
                         <img class="logo" src="{{mainBanner['common.website.logo'][0]['common.website.logo.path']}}" alt="Segosarem Logo">
                         <div class="d-inline-flex align-items-center banner-text">
                             <div class="banner-text-wrapper position-relative">
-                                <img class="dash" src="/assets/images/dash.svg" alt="Thunder" ng-if="props.type == '1'">
+                                <img class="dash" src="/assets/images/dash.svg" alt="Thunder" ng-if="props.type == '1'" animate-css animation="flash" iteration-delay="1000">
                                 <span class="section-title section-title-1" ng-if="props.upperTitle">{{props.upperTitle}}</span><br>
                                 <span class="section-title section-title-2" ng-if="props.lowerTitle">{{props.lowerTitle}}</span>
                                 <img class="underline" src="/assets/images/underline-white.svg" alt="underline">
                             </div>
                         </div>
-                        <div class="banner-menu-wrapper position-relative" ng-if="props.type == '1'">
-                            <img class="quote-1" src="/assets/images/quote-white-01.svg" alt="Quote One">
+                        <div class="banner-menu-wrapper position-relative" ng-if="props.type == '1'" animate-css animation="bounce" iteration-delay="2000">
+                            <img class="quote-1" src="/assets/images/quote-white-01.svg" alt="Quote One" animate-css animation="tada" iteration-delay="2000">
                             <img class="banner-menu" ng-src="{{props.bannerImage}}"
                                 alt="Main Banner Menu">
-                            <img class="quote-2" src="/assets/images/quote-white-02.svg" alt="Quote Two">
+                            <img class="quote-2" src="/assets/images/quote-white-02.svg" alt="Quote Two" animate-css animation="tada" iteration-delay="2000">
                         </div>
                     </div>
                 </div>

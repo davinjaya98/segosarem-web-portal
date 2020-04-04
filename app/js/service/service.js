@@ -194,6 +194,37 @@ serviceManager.directive("toolTip", function () {
         }
     }
 });
+//animation - css class for the animation
+//iteration delay - ms 1000
+serviceManager.directive("animateCss", function () {
+    return {
+        restrict: "A",
+        scope: {
+            animation: "@",
+            iterationDelay: "@"
+        },
+        link: (scope, element, attr) => {
+            var iterationDelay = 0;
+
+            if(scope.iterationDelay) {
+                try {
+                    iterationDelay = Number.parseInt(scope.iterationDelay);
+                }
+                catch(e) {}
+            }
+            console.log(iterationDelay)
+            setInterval(() => {
+                triggerAnimation();
+            }, iterationDelay);
+
+            function triggerAnimation() {
+                $(element).toggleClass("animated");
+                $(element).toggleClass(scope.animation);
+            }
+        }
+    }
+});
+//Bound to Project
 serviceManager.filter('customOrderByKey', function() {
     return function(obj, k) {
         if(obj) {
