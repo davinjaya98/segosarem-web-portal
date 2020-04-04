@@ -108,6 +108,20 @@ serviceManager.service("HTTPService", ['$rootScope', '$q', '$http', 'AppConstant
             // alert(AppConstant.ERROR_MSG.GENERAL)
         }
 
+        this.getURLEncoded = (url) => {
+            var defer = $q.defer();
+
+            $http.get(url).then((response) => {
+                this.handleSuccess(response);
+
+                defer.resolve(response.data);
+            }).catch((error) => {
+                this.handleError(error);
+            });
+
+            return defer.promise;
+        }
+
         this.postFormData = (url, formData) => {
             var defer = $q.defer();
 

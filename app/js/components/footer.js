@@ -1,7 +1,7 @@
 app.component('cFooter', {
     // This is the HTML
     template:
-        `<footer>
+        `<footer ng-init="initFooterController()">
             <div class="main-footer">
                 <div class="custom-container">
                     <div class="row">
@@ -12,34 +12,24 @@ app.component('cFooter', {
                         </div>
                         <div class="col-xs-12 col-sm-8 col-lg-7 col-xl-6">
                             <div class="d-flex align-items-center instagram-details">
-                                <img class="logo" src="/assets/images/logo.png" alt="Segosarem Logo">
+                                <img class="logo" src="{{mainBanner['common.website.logo'][0]['common.website.logo.path']}}" alt="Segosarem Logo">
                                 <div class="instagram-details-wrapper">
                                     <div class="d-flex align-items-center">
                                         <img class="instagram-logo" src="/assets/images/instagram-logo.png"
                                             alt="Instagram Logo">
-                                        <span class="username">@segosaremcakboyo</span>
+                                        <span class="username">@{{footer.username}}</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between instagram-follow">
                                         <span>Follow our instagram</span>
-                                        <a href="#">Follow</a>
+                                        <a ng-href="https://www.instagram.com/{{footer.username}}" target="_blank">Follow</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-flex instagram-post">
-                                <div class="post">
-                                    <img src="/assets/images/instagram-post-1.png">
-                                </div>
-                                <div class="post">
-                                    <img src="/assets/images/instagram-post-2.png">
-                                </div>
-                                <div class="post">
-                                    <img src="/assets/images/instagram-post-3.png">
-                                </div>
-                                <div class="d-none d-lg-block post">
-                                    <img src="/assets/images/instagram-post-4.png">
-                                </div>
-                                <div class="d-none d-lg-block post">
-                                    <img src="/assets/images/instagram-post-5.png">
+                                <div class="post-wrapper" ng-class="{'d-none d-lg-block' : ($index + 1) > 3}" ng-repeat="igMedia in footer.media | limitTo:5 track by $index">
+                                    <div class="post">
+                                        <img ng-src="{{igMedia.media_url}}">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -69,9 +59,37 @@ app.component('cFooter', {
 footerController.$inject = ['$scope', 'HTTPService', 'LoadingService', 'AppConstant', '$timeout'];
 function footerController($scope, HTTPService, LoadingService, AppConstant, $timeout) {
     // This is the state
-    $scope.footer = {};
+    $scope.footer = {
+        media: []
+    };
 
     $scope.initFooterController = () => {
         console.log("footer component is opened");
+        //Get Instagram Token
+        HTTPService.getURLEncoded("https://ig.instant-tokens.com/users/f3ef5a53-e977-4318-a70c-b4212f405fcb/instagram/17841401699539304/token?userSecret=29ob1zpedyx22pamix6iny").then((res) => {
+            let apiToken = res.Token;
+            //Get instagram User Details
+            let userFields = "id,username";
+            HTTPService.getURLEncoded(`https://graph.instagram.com/me?fields=${userFields}&access_token=${apiToken}`).then((userRes) => {
+                $scope.footer = {...$scope.footer, ...userRes};
+                console.log($scope.footer);
+            });
+            //Get instagram User Media
+            let mediaFields = "media_url,caption";
+            HTTPService.getURLEncoded(`https://graph.instagram.com/me/media?fields=${mediaFields}&access_token=${apiToken}`).then((mediaRes) => {
+                $scope.footer.media = mediaRes.data;
+                console.log($scope.footer);
+            });
+        });
+        
+        let request = {
+            "pageKey": "common"
+        }
+        HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
+            console.log("Main Banner is loaded with ", res);
+            if(res.returnCode == "000000") {
+                $scope.footer = {...$scope.footer, ...res.responseObject.common};
+            }
+        });
     }
 }
