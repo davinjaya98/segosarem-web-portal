@@ -6,7 +6,7 @@ app.component('aboutUsFull', {
                 <div class="c-about-us-full-container">
                     <img ng-src="{{aboutUsFull['aboutus.aboutussfull.image'][0]['aboutus.aboutussfull.image.path']}}" alt="about us full image">
                     <div class="c-about-us-full-description-placeholder">
-                        <p>{{aboutUsFull['aboutus.aboutussfull.desc'][0]['aboutus.aboutussfull.desc.text']}}</p>
+                        <p ng-bind-html="aboutUsFull['aboutus.aboutussfull.desc'][0]['aboutus.aboutussfull.desc.text']"></p>
                     </div>
                 </div>
             </div>
