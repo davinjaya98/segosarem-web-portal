@@ -12,7 +12,7 @@ app.component('cFooter', {
                         </div>
                         <div class="col-xs-12 col-sm-8 col-lg-7 col-xl-6">
                             <div class="d-flex align-items-center instagram-details">
-                                <img class="logo" src="{{mainBanner['common.website.logo'][0]['common.website.logo.path']}}" alt="Segosarem Logo">
+                                <img class="logo" src="{{footer['common.website.logo'][0]['common.website.logo.path']}}" alt="Segosarem Logo">
                                 <div class="instagram-details-wrapper">
                                     <div class="d-flex align-items-center">
                                         <img class="instagram-logo" src="/assets/images/instagram-logo.png"
@@ -72,13 +72,11 @@ function footerController($scope, HTTPService, LoadingService, AppConstant, $tim
             let userFields = "id,username";
             HTTPService.getURLEncoded(`https://graph.instagram.com/me?fields=${userFields}&access_token=${apiToken}`).then((userRes) => {
                 $scope.footer = {...$scope.footer, ...userRes};
-                console.log($scope.footer);
             });
             //Get instagram User Media
             let mediaFields = "media_url,caption";
             HTTPService.getURLEncoded(`https://graph.instagram.com/me/media?fields=${mediaFields}&access_token=${apiToken}`).then((mediaRes) => {
                 $scope.footer.media = mediaRes.data;
-                console.log($scope.footer);
             });
         });
         
@@ -86,7 +84,6 @@ function footerController($scope, HTTPService, LoadingService, AppConstant, $tim
             "pageKey": "common"
         }
         HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
-            console.log("Main Banner is loaded with ", res);
             if(res.returnCode == "000000") {
                 $scope.footer = {...$scope.footer, ...res.responseObject.common};
             }
