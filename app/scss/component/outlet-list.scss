@@ -8,9 +8,15 @@
          margin-top: calculateRem(87px);
     }
 
+    .no-underline {
+      text-decoration: none;
+      color: #393939;
+    }
+
     .row {
         .c-outlet-single {
             padding: calculateRem(8px);
+
             //margin: calculateRem(4px);
             @media (min-width: 991px) {
               padding: calculateRem(20px);

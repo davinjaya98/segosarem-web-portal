@@ -17,7 +17,7 @@ app.component('cFeatures', {
                         <div class="features">
                             <img ng-src="{{feature['aboutus.features.card.imgpath']}}" alt="{{feature['aboutus.features.card.title']}}">
                             <h3>{{feature['aboutus.features.card.title']}}</h3>
-                            <span>{{feature['aboutus.features.card.desc']}}</span>
+                            <span ng-bind-html="feature['aboutus.features.card.desc']"></span>
                         </div>
                     </div>
                 </div>
