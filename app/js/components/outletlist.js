@@ -7,7 +7,7 @@ app.component('outletList', {
                 <div class="row">
                     
                     <!-- single outlet -->
-                    <div class="col-xs-12 col-sm-6" ng-repeat="outlet in outletlist['outlet.outletlist.card']">
+                    <a href="#" class="col-xs-12 col-sm-6 no-underline" ng-repeat="outlet in outletlist['outlet.outletlist.card']">
                         <div class="c-outlet-single">
                             <img class="outlet-image" ng-src="{{outlet['outlet.outletlist.card.imgpath']}}" alt="{{outlet['outlet.outletlist.card.title']}}"/>
                             <div class="position-relative">
@@ -23,10 +23,11 @@ app.component('outletList', {
                             </div>
 
                             <p>{{outlet['outlet.outletlist.card.desc']}}</p>
-                            <a href="#" class="d-flex align-items-center outlet-target">
+                            
+                            <div class="d-flex align-items-center outlet-target">
                                 <span>Lihat di map</span>
-                                <img src="/assets/images/arrow-red.svg" alt="Arrow" />
-                            </a>
+                                <img src="/assets/images/arrow-red.svg" alt="Arrow" />            
+                            </div>
                         </div>
                     </div>
                     <!-- single outlet -->
