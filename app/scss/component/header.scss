@@ -36,14 +36,28 @@ c-header {
         transition: .5s;
         &.show {
             transform: translateX(0);
+            .close-wrapper {
+                opacity: 1;
+            }
         }
         &-links-wrapper {
             display: flex;
             flex-direction: column;
             background-color: $color-brick;
-            padding-top: 12vh;  
-            min-height: calc(100% - 12vh);
-            a {
+            // padding-top: 12vh;  
+            // min-height: calc(100% - 12vh);
+            min-height: calc(100%);
+            .close-wrapper {
+                height: 4.375rem;
+                padding-right: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                opacity: 0;
+                transition: .5s;
+                transition-delay: .55s;
+            }
+            & > a {
                 color: $color-white;
                 text-decoration: none;
                 text-align: right;

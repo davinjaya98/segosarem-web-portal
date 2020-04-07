@@ -4,9 +4,9 @@ app.component('cTestimonies', {
         `<div class="c-testimonies">
             <div class="custom-container">
                 <div class="c-testimonies-image">
-                    <div class="c-testimonies-image-wrapper">
-                        <!-- ng-repeat image nya disini -->
-                        <img ng-repeat="testimony in testimonies['aboutus.testimonies.slider']" ng-src="{{testimony['aboutus.testimonies.slider.imgpath']}}" alt="{{testimony['aboutus.testimonies.slider.nametext']}}">
+                    <!-- ng-repeat image nya disini -->
+                    <div class="c-testimonies-image-wrapper" ng-repeat="testimony in testimonies['aboutus.testimonies.slider']">
+                        <img ng-src="{{testimony['aboutus.testimonies.slider.imgpath']}}" alt="{{testimony['aboutus.testimonies.slider.nametext']}}">
                     </div>
                 </div>
                 <div class="c-testimonies-carousel">
@@ -52,7 +52,7 @@ function testimoniesController($scope, HTTPService, LoadingService, AppConstant,
     }
 
     function initializeSlick() {
-        $('.c-testimonies-image-wrapper').slick({
+        $('.c-testimonies-image').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
             arrows: false,
@@ -62,7 +62,7 @@ function testimoniesController($scope, HTTPService, LoadingService, AppConstant,
         $('.c-testimonies-carousel').slick({
             arrows: false,
             dots: true,
-            asNavFor: '.c-testimonies-image-wrapper'
+            asNavFor: '.c-testimonies-image'
         });
     }
 }

@@ -11,7 +11,7 @@ app.component('cHeader', {
                 <!-- Desktop -->
                 <!-- Mobile -->
                 <div class="d-block d-lg-none">
-                    <div class="menu-icon" ng-click="openHeader()">
+                    <div class="menu-icon" ng-click="toggleHeader(true)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                             <path fill="#FFF" fill-rule="evenodd"
                                 d="M29.333 24c0 .736-.597 1.333-1.333 1.333H8c-.736 0-1.333-.597-1.333-1.333S7.264 22.667 8 22.667h20c.736 0 1.333.597 1.333 1.333zm0-8c0 .736-.597 1.333-1.333 1.333H14.667c-.737 0-1.334-.597-1.334-1.333s.597-1.333 1.334-1.333H28c.736 0 1.333.597 1.333 1.333zm0-8c0 .736-.597 1.333-1.333 1.333H4c-.736 0-1.333-.597-1.333-1.333S3.264 6.667 4 6.667h24c.736 0 1.333.597 1.333 1.333z" />
@@ -24,6 +24,9 @@ app.component('cHeader', {
         <!-- Mobile -->
         <div class="mobile-menu-overlay d-block d-lg-none" ng-class="{'show': open}">
             <div class="mobile-menu-overlay-links-wrapper">
+                <div class="close-wrapper">
+                    <a class="close" ng-click="toggleHeader(false)"><img src="/assets/images/close-white.svg" alt="Close Modal Image"></a>
+                </div>
                 <a ng-class="{'active': isActiveUrl(page.url)}" ng-repeat="page in header.pages" ng-href="{{page.url}}">{{page.label}}</a>
                 <a onclick="feLib.trigger_contact_us_modal()">Hubungi Kami</a>
             </div>
@@ -51,10 +54,10 @@ function headerController($scope, HTTPService, LoadingService, AppConstant, $tim
             label: "Home"
         },{
             url: "/gallery/gallery.html",
-            label: "Galeri"
+            label: "Galeri Makanan"
         },{
             url: "/outlet/outlet.html",
-            label: "Gerai"
+            label: "Gerai Kami"
         },{
             url: "/about-us/about-us.html",
             label: "Tentang Kami"
@@ -69,7 +72,7 @@ function headerController($scope, HTTPService, LoadingService, AppConstant, $tim
             //if you click on anything except the modal itself or the "open modal" link, close the modal
             if (!$(event.target).closest("c-header").length) {
                 $timeout(() => {
-                    $scope.open = false;
+                    $scope.toggleHeader(false)
                 });
             }
         });
@@ -104,7 +107,7 @@ function headerController($scope, HTTPService, LoadingService, AppConstant, $tim
         return currentUrl.indexOf(url) > -1;
     }
     //To open the header
-    $scope.openHeader = () => {
-        $scope.open = true;
+    $scope.toggleHeader = (open) => {
+        $scope.open = open;
     }
 }

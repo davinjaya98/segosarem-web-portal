@@ -9,8 +9,23 @@
         left: 50%;
         transform: translate(-50%, -78px);
         width: calculateRem(156px);
-        img {
-            width: 100%;
+        .c-testimonies-image-wrapper {
+            position: relative;
+            img {
+                width: 100%;
+                border-radius: 100%;
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: transparent;
+                border-radius: 100%;
+                border: calculateRem(7px) solid $color-fff-300;
+            }
         }
     }
     .c-testimonies-carousel {
