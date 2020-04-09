@@ -1,34 +1,53 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" ng-app="SegosaremWebPortal" ng-controller="HomepageController">
 
 <head>
-  <title>This is the index page</title>
-  <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{pageSetting.title}}</title>
+    <meta name="description" ng-attr-content="{{pageSetting.description}}">
+    <meta name="keywords" ng-attr-content="{{pageSetting.seoKeywords}}">
+    <base href="/">
+    <script src="/assets/js/vendor.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/fe-lib.js"></script>
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 
-<body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <h1 class="mb-3">Index</h1>
-        <h4>1. Home Page</h4>
-        <ul>
-          <li><a href="/home/home.html">Home Page</a></li>
-        </ul>
-        <h4>2. Gallery</h4>
-        <ul>
-          <li><a href="/gallery/gallery.html">Gallery</a></li>
-        </ul>
-        <h4>3. Outlets</h4>
-        <ul>
-          <li><a href="/outlet/outlet.html">Outlets</a></li>
-        </ul>
-        <h4>4. About Us</h4>
-        <ul>
-          <li><a href="/about-us/about-us.html">About Us</a></li>
-        </ul>
-      </div>
+<body animate-css animation="fadeIn" ng-init="initHomepageController()">
+    <!-- Header -->
+    <c-header></c-header>
+    <!-- Header -->
+    <div class="content">
+        <!-- Main Banner -->
+        <section>
+            <main-banner upper-title="homepage['homepage.mainbanner.title1'][0]['homepage.mainbanner.title1.text']" lower-title="homepage['homepage.mainbanner.title2'][0]['homepage.mainbanner.title2.text']" banner-image="homepage['homepage.mainbanner.image'][0]['homepage.mainbanner.image.path']" type="1"></main-banner>
+        </section>
+        <!-- Main Banner -->
+
+        <!-- Trending Menu -->
+        <section>
+            <trending-menu></trending-menu>
+        </section>
+        <!-- Trending Menu -->
+
+        <!-- Newest Outlet -->
+        <section>
+            <newest-outlet></newest-outlet>
+        </section>
+        <!-- Newest Outlet -->
+
+        <!-- About Us Snippet -->
+        <section>
+            <about-us-snippet></about-us-snippet>
+        </section>
+        <!-- About Us Snippet -->
+
+        <!-- Footer-->
+        <c-footer></c-footer>
+        <!-- Footer-->
     </div>
-  </div>
+    <contact-us-modal></contact-us-modal>
 </body>
 
 </html>

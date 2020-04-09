@@ -50,7 +50,7 @@ function headerController($scope, HTTPService, LoadingService, AppConstant, $tim
     //This is the State
     $scope.header = {
         pages: [{
-            url: "/home/home.html",
+            url: "/",
             label: "Home"
         },{
             url: "/gallery/gallery.html",

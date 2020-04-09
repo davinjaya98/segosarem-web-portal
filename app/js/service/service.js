@@ -209,13 +209,16 @@ serviceManager.directive("animateCss", function () {
             if(scope.iterationDelay) {
                 try {
                     iterationDelay = Number.parseInt(scope.iterationDelay);
+                    console.log(iterationDelay)
+                    setInterval(() => {
+                        triggerAnimation();
+                    }, iterationDelay);
                 }
                 catch(e) {}
             }
-            console.log(iterationDelay)
-            setInterval(() => {
+            else {
                 triggerAnimation();
-            }, iterationDelay);
+            }
 
             function triggerAnimation() {
                 $(element).toggleClass("animated");
