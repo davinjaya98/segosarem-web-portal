@@ -66,7 +66,6 @@ function headerController($scope, HTTPService, LoadingService, AppConstant, $tim
 
     //To initialize various logic for the header
     $scope.initHeaderController = () => {
-        console.log("Header is loaded");
         //Event listener to close mmobile header on click outside
         $(document).click(function (event) {
             //if you click on anything except the modal itself or the "open modal" link, close the modal
@@ -80,7 +79,6 @@ function headerController($scope, HTTPService, LoadingService, AppConstant, $tim
         //Watcher to disable or able body scroll
         $scope.$watch('open', function (newValue, oldValue, scope) {
             if (oldValue !== newValue) {
-                console.log(newValue);
                 //If open is true
                 if (newValue) {
                     $("body").css("overflow", "hidden");
@@ -93,7 +91,6 @@ function headerController($scope, HTTPService, LoadingService, AppConstant, $tim
         //Event listener to reset open scope when the screen size changes
         $(window).on("resize", () => {
             var screenSize = window.innerWidth;
-            console.log(screenSize);
             if (screenSize > 991) {
                 $timeout(() => {
                     $scope.open = false;

@@ -22,7 +22,7 @@ app.component('contactUsModal', {
                             <div class="input-group">
                                 <img class="prepend-position-1" src="/assets/images/phone.svg">
                                 <span class="prepend-position-2">+62</span>
-                                <input name="phoneNumber" type="text" placeholder="81234567890" ng-model="contactUs.phoneNumber" numeric required>
+                                <input name="phoneNumber" type="text" placeholder="81234567890" ng-model="contactUs.phoneNumber" numeric indonesia-number="true" required>
                             </div>
                         </div>
                         <div class="form-group">

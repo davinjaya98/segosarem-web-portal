@@ -57,7 +57,6 @@ function mainBannerController($scope, HTTPService, LoadingService, AppConstant, 
             "pageKey": "common"
         }
         HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
-            console.log("Main Banner is loaded with ", res);
             if(res.returnCode == "000000") {
                 $scope.mainBanner = res.responseObject.common;
             }

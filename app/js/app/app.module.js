@@ -8,9 +8,7 @@ app.run(globalFunction);
 //Try to revise the code logic. For else if statement, use switch case statement instead
 //Endpoint is at header script
 globalFunction.$inject = ['HTTPService', 'NotificationService', 'LoadingService', 'AppConstant', '$rootScope'];
-function globalFunction(HTTPService, NotificationService, LoadingService, AppConstant, $rootScope) {
-    console.log("This is a global function that is run everytime the angular is loaded")
-}
+function globalFunction(HTTPService, NotificationService, LoadingService, AppConstant, $rootScope) {}
 
 app.controller("HomepageController", homepageController)
     .controller("GalleryController", galleryController)
@@ -28,7 +26,6 @@ function homepageController($scope, HTTPService) {
             "pageKey": "homepage"
         }
         HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
-            console.log("Homepage is loaded with ", res);
             if (res.returnCode == "000000") {
                 $scope.homepage = res.responseObject.homepage;
                 $scope.pageSetting = res.responseObject.pageSetting;
@@ -78,14 +75,12 @@ outletController.$inject = ['$scope', 'HTTPService'];
 function outletController($scope, HTTPService) {
     $scope.outlet = {};
     $scope.pageSetting = {};
-    console.log("outlet controller called");
 
     $scope.initOutletController = () => {
         let request = {
             "pageKey": "outlet"
         }
         HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
-            console.log("outlet json sent");
             if (res.returnCode == "000000") {
                 $scope.outlet = res.responseObject.outlet;
                 $scope.pageSetting = res.responseObject.pageSetting;

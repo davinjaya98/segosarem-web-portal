@@ -41,7 +41,6 @@ function testimoniesController($scope, HTTPService, LoadingService, AppConstant,
             "pageKey": "aboutus"
         }
         HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
-            console.log("Testimonies loaded with ", res);
             if (res.returnCode == "000000") {
                 $scope.testimonies = res.responseObject.aboutus;
                 $timeout(() => {

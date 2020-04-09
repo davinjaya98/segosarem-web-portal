@@ -209,7 +209,6 @@ serviceManager.directive("animateCss", function () {
             if(scope.iterationDelay) {
                 try {
                     iterationDelay = Number.parseInt(scope.iterationDelay);
-                    console.log(iterationDelay)
                     setInterval(() => {
                         triggerAnimation();
                     }, iterationDelay);
@@ -227,6 +226,31 @@ serviceManager.directive("animateCss", function () {
         }
     }
 });
+serviceManager.directive("input", ["$timeout", function ($timeout) {
+    return {
+        restrict: "E",
+        scope: {
+            indonesiaNumber: "=",
+            ngModel: "="
+        },
+        link: (scope, element, attr) => {
+            if(scope.indonesiaNumber) {
+                scope.$watch("ngModel", function(newValue, oldValue) {
+                    if(newValue) {
+                        // Check leading zero first
+                        newValue = newValue.replace(/^0*/g, '');
+                        if(!(/^[1-9][0-9]*$/.test(newValue))) {
+                            newValue = oldValue;
+                        }
+                        $timeout(function() {
+                            scope.ngModel = newValue;
+                        });
+                    }
+                })
+            }
+        }
+    }
+}]);
 //Bound to Project
 serviceManager.filter('customOrderByKey', function() {
     return function(obj, k) {
@@ -241,4 +265,4 @@ serviceManager.filter('customOrderByKey', function() {
 
         return obj;
     }
-})
+});

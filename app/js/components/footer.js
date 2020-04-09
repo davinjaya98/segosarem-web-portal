@@ -64,7 +64,6 @@ function footerController($scope, HTTPService, LoadingService, AppConstant, $tim
     };
 
     $scope.initFooterController = () => {
-        console.log("footer component is opened");
         //Get Instagram Token
         HTTPService.getURLEncoded("https://ig.instant-tokens.com/users/f3ef5a53-e977-4318-a70c-b4212f405fcb/instagram/17841401699539304/token?userSecret=29ob1zpedyx22pamix6iny").then((res) => {
             let apiToken = res.Token;

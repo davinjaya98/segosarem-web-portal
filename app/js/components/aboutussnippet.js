@@ -47,7 +47,6 @@ function aboutUsSnippetController($scope, HTTPService, LoadingService, AppConsta
             "pageKey": "common"
         }
         HTTPService.postJson("/segosarem-backend/getAllValueByPageSettingKey", request).then((res) => {
-            console.log("About Us Snippet is loaded with ", res);
             if(res.returnCode == "000000") {
                 $scope.aboutUsSnippet = res.responseObject.common;
             }
