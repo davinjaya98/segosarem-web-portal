@@ -7,7 +7,7 @@ app.component('outletList', {
                 <div class="row">
                     
                     <!-- single outlet -->
-                    <a href="#" class="col-xs-12 col-sm-6 no-underline" ng-repeat="outlet in outletlist['outlet.outletlist.card']">
+                    <a ng-href="{{outlet['outlet.outletlist.card.locationUrl']}}" target="_blank" class="col-xs-12 col-sm-6 no-underline" ng-repeat="outlet in outletlist['outlet.outletlist.card']">
                         <div class="c-outlet-single">
                             <img class="outlet-image" ng-src="{{outlet['outlet.outletlist.card.imgpath']}}" alt="{{outlet['outlet.outletlist.card.title']}}"/>
                             <div class="position-relative">
