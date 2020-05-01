@@ -10,6 +10,7 @@ c-header {
         z-index: 10;
         .desktop-menu {
             a {
+                cursor: pointer;
                 color: $color-white;
                 text-decoration: none;
                 opacity: .8;

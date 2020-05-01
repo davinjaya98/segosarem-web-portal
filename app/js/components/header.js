@@ -101,7 +101,10 @@ function headerController($scope, HTTPService, LoadingService, AppConstant, $tim
     //To check whether the link is under the current page
     $scope.isActiveUrl = (url) => {
         let currentUrl = window.location.href;
-        return currentUrl.indexOf(url) > -1;
+        let otherUrl = window.location.origin.concat(url);
+
+        if (currentUrl.localeCompare(otherUrl) == 0) return true;
+        return false;
     }
     //To open the header
     $scope.toggleHeader = (open) => {
