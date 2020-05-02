@@ -64,21 +64,6 @@ function footerController($scope, HTTPService, LoadingService, AppConstant, $tim
     };
 
     $scope.initFooterController = () => {
-        //Get Instagram Token
-        HTTPService.getURLEncoded("https://ig.instant-tokens.com/users/f3ef5a53-e977-4318-a70c-b4212f405fcb/instagram/17841401699539304/token?userSecret=29ob1zpedyx22pamix6iny").then((res) => {
-            let apiToken = res.Token;
-            //Get instagram User Details
-            let userFields = "id,username";
-            HTTPService.getURLEncoded(`https://graph.instagram.com/me?fields=${userFields}&access_token=${apiToken}`).then((userRes) => {
-                $scope.footer = {...$scope.footer, ...userRes};
-            });
-            //Get instagram User Media
-            let mediaFields = "media_url,caption";
-            HTTPService.getURLEncoded(`https://graph.instagram.com/me/media?fields=${mediaFields}&access_token=${apiToken}`).then((mediaRes) => {
-                $scope.footer.media = mediaRes.data;
-            });
-        });
-        
         let request = {
             "pageKey": "common"
         }
@@ -86,6 +71,23 @@ function footerController($scope, HTTPService, LoadingService, AppConstant, $tim
             if(res.returnCode == "000000") {
                 $scope.footer = {...$scope.footer, ...res.responseObject.common};
             }
+
+            //Get Instagram Token
+            HTTPService.getURLEncoded($scope.footer['common.instagram.url'][0]['common.instagram.url.path']).then((res) => {
+                let apiToken = res.Token;
+                //Get instagram User Details
+                let userFields = "id,username";
+                HTTPService.getURLEncoded(`https://graph.instagram.com/me?fields=${userFields}&access_token=${apiToken}`).then((userRes) => {
+                    $scope.footer = {...$scope.footer, ...userRes};
+                });
+                //Get instagram User Media
+                let mediaFields = "media_url,caption";
+                HTTPService.getURLEncoded(`https://graph.instagram.com/me/media?fields=${mediaFields}&access_token=${apiToken}`).then((mediaRes) => {
+                    $scope.footer.media = mediaRes.data;
+                });
+            });
         });
+        
+        
     }
 }
