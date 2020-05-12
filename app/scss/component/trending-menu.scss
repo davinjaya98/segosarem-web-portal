@@ -17,8 +17,8 @@
         .trending-menu-target {
             //margin-bottom: calculateRem(45px);
             position: absolute;
-            right: calculateRem(0px);
-            top: calculateRem(-0px);
+            right: calculateRem(16px);
+            bottom: calculateRem(16px);
             color: $color-878787;
             text-decoration: none;
             //justify-content: flex-end;
@@ -31,12 +31,13 @@
                 }
             }
             @media (min-width: 768px) {
-                top: calculateRem(-530px);
+                top: calculateRem(110px);
+                bottom: unset;
                 //justify-content: flex-start;
                 //padding-left: 0;
             }
             @media (min-width: 1024px) {
-                top: calculateRem(-640px);
+                top: calculateRem(128px);
             }
         }
     }
