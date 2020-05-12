@@ -256,8 +256,8 @@ serviceManager.filter('customOrderByKey', function() {
     return function(obj, k) {
         if(obj) {
             obj.sort((a, b) => {
-                if (a[k] > b[k]) return 1;
-                if (b[k] > a[k]) return -1;
+                if (Number.parseInt(a[k]) > Number.parseInt(b[k])) return 1;
+                if (Number.parseInt(b[k]) > Number.parseInt(a[k])) return -1;
               
                 return 0;
             });
